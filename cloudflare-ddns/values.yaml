@@ -1,0 +1,67 @@
+image:
+  repository: ghcr.io/jr0dd/cloudflare-ddns
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+replicas: 1
+
+strategy:
+  type: Recreate
+
+env:
+  TZ: "America/New_York"
+  CRON: "*/15 * * * *"
+
+envFrom:
+- secretRef: 
+      name: cloudflare-api-credentials
+
+service:
+  enabled: false
+  type: ClusterIP
+  port:
+    name: ""
+    protocol: TCP
+    port: ""
+
+persistence:
+  config:
+    enabled: false
+    mountPath: /config
+
+ingress:
+  enabled: false
+
+probes:
+  liveness:
+    enabled: true
+    custom: true
+    spec:
+      exec:
+        command: ["sh", "-c", "if [ `pidof cron` ]; then exit 0; fi"]
+      initialDelaySeconds: 0
+      timeoutSeconds: 1
+      periodSeconds: 5
+      failureThreshold: 5
+
+  readiness:
+    enabled: true
+    custom: true
+    spec:
+      exec:
+        command: ["sh", "-c", "if [ `crontab -l | grep -o 'ddns'` ]; then exit 0; fi"]
+      initialDelaySeconds: 0
+      timeoutSeconds: 1
+      periodSeconds: 5
+      failureThreshold: 3
+
+  startup:
+    enabled: true
+    custom: true
+    spec:
+      exec:
+        command: ["sh", "-c", "if [ `crontab -l | grep -o 'API'` ]; then exit 0; fi"]
+      initialDelaySeconds: 5
+      timeoutSeconds: 2
+      periodSeconds: 10
+      failureThreshold: 3
