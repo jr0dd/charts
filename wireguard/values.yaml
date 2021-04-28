@@ -1,0 +1,69 @@
+image:
+  repository: ghcr.io/k8s-at-home/wireguard
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+replicas: 1
+
+strategy:
+  type: Recreate
+
+env:
+  TZ: "America/New_York"
+
+service:
+  enabled: true
+  type: ClusterIP
+  #externalTrafficPolicy: Local
+  port:
+    port: 51820
+    protocol: UDP
+    name: wireguard
+
+persistence:
+  config:
+    enabled: false
+    mountPath: /etc/wireguard
+
+ingress:
+  enabled: false
+
+securityContext:
+  capabilities:
+    add:
+      - NET_ADMIN
+      - SYS_MODULE
+
+probes:
+  liveness:
+    enabled: true
+    custom: true
+    spec:
+      exec:
+        command: ["bash", "-c", "if wg | grep -q wg0 && cat /tmp/healthy == 'live'; then exit 0; fi"]
+      initialDelaySeconds: 0
+      timeoutSeconds: 1
+      periodSeconds: 5
+      failureThreshold: 5
+
+  readiness:
+    enabled: true
+    custom: true
+    spec:
+      exec:
+        command: ["bash", "-c", "if wg | grep -q wg0 && cat /tmp/healthy == 'ready'; then echo 'live' > /tmp/healthy; fi"]
+      initialDelaySeconds: 0
+      timeoutSeconds: 1
+      periodSeconds: 5
+      failureThreshold: 3
+
+  startup:
+    enabled: true
+    custom: true
+    spec:
+      exec:
+        command: ["bash", "-c", "if wg | grep -q wg0; then echo 'ready' > /tmp/healthy; fi"]
+      initialDelaySeconds: 5
+      timeoutSeconds: 2
+      periodSeconds: 10
+      failureThreshold: 5

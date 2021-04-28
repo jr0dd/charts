@@ -1,0 +1,32 @@
+{{/* Make sure all variables are set properly */}}                                                                                                                                                                          
+{{- include "common.values.setup" . }}
+
+{{/* Append the configMap to the additionalVolumes */}}
+{{- define "discord-stock-ticker.configmap.volume" -}}
+name: discord-stock-ticker-settings
+configMap:
+  defaultMode: 0755
+  name: {{ template "common.names.fullname" . }}-config
+{{- end -}}
+
+{{- $volume := include "discord-stock-ticker.configmap.volume" . | fromYaml -}}
+{{- if $volume -}}
+    {{- $additionalVolumes := append .Values.additionalVolumes $volume }}
+    {{- $_ := set .Values "additionalVolumes" (deepCopy $additionalVolumes) -}}
+{{- end -}}
+
+{{/* Append the configMap volume to the additionalVolumeMounts */}}
+{{- define "discord-stock-ticker.configmap.volumeMount" -}}
+name: discord-stock-ticker-settings
+mountPath: /app/config.sh
+subPath: config.sh
+{{- end -}}
+
+{{- $volumeMount := include "discord-stock-ticker.configmap.volumeMount" . | fromYaml -}}
+{{- if $volumeMount -}}
+    {{- $additionalVolumeMounts := append .Values.additionalVolumeMounts $volumeMount }}
+    {{- $_ := set .Values "additionalVolumeMounts" (deepCopy $additionalVolumeMounts) -}}
+{{- end -}}
+
+{{/* Render the templates */}}
+{{ include "common.all" . }}

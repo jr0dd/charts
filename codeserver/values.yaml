@@ -1,0 +1,34 @@
+image:
+  repository: bencdr/code-server-deploy-container
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+replicas: 1
+
+strategy:
+  type: Recreate
+
+env:
+  TZ: "America/New_York"
+  PASSWORD: adminadminadmin
+  #HASHED_PASSWORD: #optional
+  USE_LINK: "false" #use code-server link instead of password (coming soon)
+  #GIT_REPO: #git repo to clone
+  START_DIR: "/home/coder/project"
+
+service:
+  enabled: true
+  type: ClusterIP
+  #externalTrafficPolicy: Local
+  port:
+    name: codeserver
+    protocol: TCP
+    port: 8080
+
+persistence:
+  config:
+    enabled: false
+    mountPath: /config
+
+ingress:
+  enabled: false

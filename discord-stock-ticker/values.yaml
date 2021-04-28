@@ -1,0 +1,112 @@
+image:
+  repository: ghcr.io/jr0dd/discord-stock-ticker
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+replicas: 1
+
+strategy:
+  type: Recreate
+
+env:
+  TZ: "America/New_York"
+  #SET_NICKNAME: "1"
+  #FREQUENCY: "5"
+  #SET_COLOR: "1"
+  #FLASH_CHANGE: "1"
+  #CRYPTO_NAME: "bitcoin"
+  #TICKER: "BTC"
+  #DISCORD_BOT_TOKEN: "CHANGEME"
+  
+envFrom:
+- secretRef:
+      name: discord-tokens
+
+service:
+  enabled: true
+  type: ClusterIP
+  port:
+    name: api
+    protocol: TCP
+    port: 8080
+
+persistence:
+  app:
+    enabled: false
+    mountPath: /app
+  config:
+    enabled: false
+    mountPath: /config
+
+ingress:
+  enabled: false
+
+probes:
+  liveness:
+    enabled: true
+    custom: true
+    spec:
+      exec:
+        command: ["bash", "-c", "if [[ $(curl -sS localhost:8080/ticker | jq | wc -l) -gt 1 ]]; then exit 0; fi"]
+      initialDelaySeconds: 0
+      periodSeconds: 10
+      timeoutSeconds: 1
+      failureThreshold: 3
+  readiness:
+    enabled: true
+    custom: true
+    spec:
+      exec:
+        command: ["bash", "-c", "if [[ $(curl -sS localhost:8080/ticker | jq | wc -l) -eq 1 ]]; then exit 0; fi"]
+      initialDelaySeconds: 0
+      periodSeconds: 10
+      timeoutSeconds: 1
+      failureThreshold: 3  
+  startup:
+    enabled: true
+    custom: true
+    spec:
+      exec:
+        command: ["bash", "/app/config.sh"]
+      initialDelaySeconds: 10
+      timeoutSeconds: 2
+      periodSeconds: 5
+      failureThreshold: 3
+
+config: |
+  #!/usr/bin/env bash
+  set -eu
+  
+  # Just copy and paste the below samples and change 
+  # the ticker, name, discord_bot_token values appropriately
+
+  FREQ="6"
+  NICK="true"
+  COLOR="true"
+  FLASH="true"
+
+  BTC=$(echo -n "$BTC" | base64 -d)
+  curl -X POST \
+  "localhost:8080/ticker" \
+  -H "Content-Type: application/json" \
+  -d "{\"ticker\":\"BTC\", \
+     \"name\":\"bitcoin\", \
+     \"discord_bot_token\":\"${BTC}\", \
+     \"crypto\":true, \
+     \"frequency\":${FREQ}, \
+     \"set_nickname\":${NICK}, \
+     \"set_color\":${COLOR}, \
+     \"flash_change\":${FLASH}}"
+
+  AMC=$(echo -n "$AMC" | base64 -d)
+  curl -X POST \
+  "localhost:8080/ticker" \
+  -H "Content-Type: application/json" \
+  -d "{\"ticker\":\"AMC\", \
+     \"name\":\"AMC\", \
+     \"discord_bot_token\":\"${AMC}\", \
+     \"crypto\":false, \
+     \"frequency\":${FREQ}, \
+     \"set_nickname\":${NICK}, \
+     \"set_color\":${COLOR}, \
+     \"flash_change\":${FLASH}}"

@@ -1,0 +1,49 @@
+image:
+  repository: pihole/pihole
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+replicas: 1
+
+strategy:
+  type: Recreate
+
+env:
+  TZ: "America/New_York"
+
+service:
+  enabled: true
+  type: ClusterIP
+  #externalTrafficPolicy: Local
+  port:
+    port: 4000
+    name: pihole
+    targetPort: 80
+  additionalServices:
+  - enabled: true
+    nameSuffix: dns-tcp
+    type: ClusterIP
+    #externalTrafficPolicy: Local
+    port:
+      port: 53
+      name: dns-tcp
+      protocol: TCP
+  - enabled: true
+    nameSuffix: dns-udp
+    type: ClusterIP
+    #externalTrafficPolicy: Local
+    port:
+      port: 53
+      name: dns-udp
+      protocol: UDP
+
+persistence:
+  config:
+    enabled: false
+    mountPath: /etc/pihole
+  dnsmasq:
+    enabled: false
+    mountPath: /etc/dnsmasq.d
+
+ingress:
+  enabled: false
