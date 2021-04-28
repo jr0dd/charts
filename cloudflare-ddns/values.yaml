@@ -38,29 +38,27 @@ probes:
     custom: true
     spec:
       exec:
-        command: ["sh", "-c", "if [ `pidof cron` ]; then exit 0; fi"]
+        command: ["bash", "-c", "if [[ $(pidof cron) ]]; then exit 0; fi"]
       initialDelaySeconds: 0
       timeoutSeconds: 1
       periodSeconds: 5
       failureThreshold: 5
-
   readiness:
     enabled: true
     custom: true
     spec:
       exec:
-        command: ["sh", "-c", "if [ `crontab -l | grep -o 'ddns'` ]; then exit 0; fi"]
+        command: ["bash", "-c", "if crontab -l | grep -q 'ddns'; then exit 0; fi"]
       initialDelaySeconds: 0
       timeoutSeconds: 1
       periodSeconds: 5
       failureThreshold: 3
-
   startup:
     enabled: true
     custom: true
     spec:
       exec:
-        command: ["sh", "-c", "if [ `crontab -l | grep -o 'API'` ]; then exit 0; fi"]
+        command: ["bash", "-c", "if crontab -l | grep -q 'API'; then exit 0; fi"] 
       initialDelaySeconds: 5
       timeoutSeconds: 2
       periodSeconds: 10
