@@ -31,9 +31,6 @@ service:
     port: 8080
 
 persistence:
-  app:
-    enabled: false
-    mountPath: /app
   config:
     enabled: false
     mountPath: /config
@@ -47,7 +44,7 @@ probes:
     custom: true
     spec:
       exec:
-        command: ["bash", "-c", "if [[ $(curl -sS localhost:8080/ticker | jq | wc -l) -gt 1 ]]; then exit 0; fi"]
+        command: ["bash", "-c", "curl -f localhost:8080/ticker"]
       initialDelaySeconds: 0
       periodSeconds: 10
       timeoutSeconds: 1
@@ -57,7 +54,7 @@ probes:
     custom: true
     spec:
       exec:
-        command: ["bash", "-c", "if [[ $(curl -sS localhost:8080/ticker | jq | wc -l) -eq 1 ]]; then exit 0; fi"]
+        command: ["bash", "-c", "curl -f localhost:8080/ticker"]
       initialDelaySeconds: 0
       periodSeconds: 10
       timeoutSeconds: 1
@@ -68,7 +65,7 @@ probes:
     spec:
       exec:
         command: ["bash", "/app/config.sh"]
-      initialDelaySeconds: 10
+      initialDelaySeconds: 0
       timeoutSeconds: 2
       periodSeconds: 5
       failureThreshold: 3
