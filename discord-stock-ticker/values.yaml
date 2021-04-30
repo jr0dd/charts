@@ -17,6 +17,7 @@ env:
   #CRYPTO_NAME: "bitcoin"
   #TICKER: "BTC"
   #DISCORD_BOT_TOKEN: "CHANGEME"
+  #PERCENTAGE: "1"
   
 envFrom:
 - secretRef:
@@ -81,6 +82,7 @@ config: |
   NICK="true"
   COLOR="true"
   FLASH="true"
+  PERCENT="true"
 
   BTC=$(echo -n "$BTC" | base64 -d)
   curl -X POST \
@@ -93,7 +95,8 @@ config: |
      \"frequency\":${FREQ}, \
      \"set_nickname\":${NICK}, \
      \"set_color\":${COLOR}, \
-     \"flash_change\":${FLASH}}"
+     \"flash_change\":${FLASH}, \
+     \"percentage\":${PERCENT}}"
 
   AMC=$(echo -n "$AMC" | base64 -d)
   curl -X POST \
@@ -106,4 +109,5 @@ config: |
      \"frequency\":${FREQ}, \
      \"set_nickname\":${NICK}, \
      \"set_color\":${COLOR}, \
-     \"flash_change\":${FLASH}}"
+     \"flash_change\":${FLASH}, \
+     \"percentage\":${PERCENT}}"
