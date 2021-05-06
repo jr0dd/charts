@@ -45,7 +45,7 @@ probes:
     custom: true
     spec:
       exec:
-        command: ["bash", "-c", "curl -f localhost:8080/ticker"]
+        command: ["bash", "-c", "if [[ $(curl -s localhost:8080/ticker | jq -r | wc -l) -gt 1 ]]; then exit 0; fi"]
       initialDelaySeconds: 0
       periodSeconds: 10
       timeoutSeconds: 1
@@ -55,7 +55,7 @@ probes:
     custom: true
     spec:
       exec:
-        command: ["bash", "-c", "curl -f localhost:8080/ticker"]
+        command: ["bash", "-c", "if [[ $(curl -s localhost:8080/ticker | jq -r | wc -l) -gt 1 ]]; then exit 0; fi"]
       initialDelaySeconds: 0
       periodSeconds: 10
       timeoutSeconds: 1
