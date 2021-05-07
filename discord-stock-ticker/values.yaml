@@ -18,10 +18,11 @@ env:
   #TICKER: "BTC"
   #DISCORD_BOT_TOKEN: "CHANGEME"
   #PERCENTAGE: "1"
+  #ARROWS: "1"
   
 envFrom:
 - secretRef:
-      name: discord-tokens
+    name: discord-tokens
 
 service:
   enabled: true
@@ -55,7 +56,7 @@ probes:
     custom: true
     spec:
       exec:
-        command: ["bash", "-c", "if [[ $(curl -s localhost:8080/ticker | jq -r | wc -l) -gt 1 ]]; then exit 0; fi"]
+        command: ["bash", "-c", "if [[ $(curl -s localhost:8080/ticker | jq -r | wc -l) -ge 1 ]]; then exit 0; fi"]
       initialDelaySeconds: 0
       periodSeconds: 10
       timeoutSeconds: 1
