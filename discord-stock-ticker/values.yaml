@@ -3,6 +3,11 @@ image:
   pullPolicy: IfNotPresent
   tag: "latest"
 
+lifecycle:
+  postStart:
+    exec:
+      command: ["bash", "/app/config.sh"]
+
 replicas: 1
 
 strategy:
@@ -66,7 +71,7 @@ probes:
     custom: true
     spec:
       exec:
-        command: ["bash", "/app/config.sh"]
+        command: ["bash", "-c", "if [[ $(curl -s localhost:8080/ticker | jq -r | wc -l) -ge 1 ]]; then exit 0; fi"]
       initialDelaySeconds: 0
       timeoutSeconds: 2
       periodSeconds: 5
