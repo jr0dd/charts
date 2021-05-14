@@ -90,7 +90,6 @@ config: |
   FLASH="true"
   PERCENT="true"
 
-  BTC=$(echo -n "$BTC" | base64 -d)
   curl -X POST \
   "localhost:8080/ticker" \
   -H "Content-Type: application/json" \
@@ -104,7 +103,6 @@ config: |
      \"flash_change\":${FLASH}, \
      \"percentage\":${PERCENT}}"
 
-  AMC=$(echo -n "$AMC" | base64 -d)
   curl -X POST \
   "localhost:8080/ticker" \
   -H "Content-Type: application/json" \

@@ -14,7 +14,6 @@ env:
 service:
   enabled: true
   type: ClusterIP
-  #externalTrafficPolicy: Local
   port:
     port: 4000
     name: pihole
@@ -23,7 +22,6 @@ service:
   - enabled: true
     nameSuffix: dns-tcp
     type: ClusterIP
-    #externalTrafficPolicy: Local
     port:
       port: 53
       name: dns-tcp
@@ -31,7 +29,6 @@ service:
   - enabled: true
     nameSuffix: dns-udp
     type: ClusterIP
-    #externalTrafficPolicy: Local
     port:
       port: 53
       name: dns-udp

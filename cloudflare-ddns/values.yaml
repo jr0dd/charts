@@ -14,7 +14,7 @@ env:
 
 envFrom:
 - secretRef: 
-      name: cloudflare-api-credentials
+    name: cloudflare-api-credentials
 
 service:
   enabled: false
