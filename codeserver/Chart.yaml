@@ -2,7 +2,7 @@ apiVersion: v2
 appVersion: "v3.10.0"
 description: VS Code in the browser
 name: codeserver
-version: 3.2.0
+version: 4.0.0
 kubeVersion: ">=1.16.0-0"
 keywords:
 - coding
