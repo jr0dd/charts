@@ -1,0 +1,15 @@
+apiVersion: v2
+appVersion: "3.0.0"
+description: An Application dashboard and launcher
+name: heimdall
+version: 1.0.0
+kubeVersion: ">=1.16.0-0"
+keywords:
+- heimdall
+icon: https://i.imgur.com/mM4tcO5.png
+sources:
+- https://github.com/linuxserver/heimdalljs
+dependencies:
+- name: common
+  version: 2.5.0
+  repository: https://library-charts.k8s-at-home.com
