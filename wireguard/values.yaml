@@ -3,22 +3,22 @@ image:
   pullPolicy: IfNotPresent
   tag: "latest"
 
-replicas: 1
-
-strategy:
-  type: Recreate
+controller:
+  enabled: true
+  replicas: 1
 
 env:
   TZ: "America/New_York"
 
 service:
-  enabled: true
-  type: ClusterIP
-  #externalTrafficPolicy: Local
-  port:
-    port: 51820
-    protocol: UDP
-    name: wireguard
+  main:
+    enabled: true
+    type: ClusterIP
+    ports:
+      http:
+        enabled: true
+        port: 51820
+        protocol: UDP
 
 persistence:
   config:
@@ -26,7 +26,10 @@ persistence:
     mountPath: /etc/wireguard
 
 ingress:
-  enabled: false
+  # -- Enable and configure ingress settings for the chart under this key.
+  # @default -- See values.yaml
+  main:
+    enabled: false
 
 securityContext:
   capabilities:

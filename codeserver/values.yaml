@@ -3,26 +3,29 @@ image:
   pullPolicy: IfNotPresent
   tag: "latest"
 
-replicas: 1
-
-strategy:
-  type: RollingUpdate
+controller:
+  enabled: true
+  replicas: 1
 
 securityContext:
   runAsUser: 568
   runAsGroup: 568
 
+secret:
+  PASSWORD: adminadmin
+
 env:
   TZ: "America/New_York"
-  PASSWORD: "changeme"
   
 service:
-  enabled: true
-  type: ClusterIP
-  port:
-    name: codeserver
-    protocol: TCP
-    port: 8080
+  main:
+    enabled: true
+    type: ClusterIP
+    ports:
+      http:
+        enabled: true
+        port: 8080
+        protocol: HTTP
 
 persistence:
   config:
@@ -30,4 +33,7 @@ persistence:
     mountPath: /home/coder
 
 ingress:
-  enabled: false
+  # -- Enable and configure ingress settings for the chart under this key.
+  # @default -- See values.yaml
+  main:
+    enabled: false

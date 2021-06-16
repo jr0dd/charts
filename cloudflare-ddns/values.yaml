@@ -3,10 +3,9 @@ image:
   pullPolicy: IfNotPresent
   tag: "latest"
 
-replicas: 1
-
-strategy:
-  type: Recreate
+controller:
+  enabled: true
+  replicas: 1
 
 env:
   TZ: "America/New_York"
@@ -17,12 +16,8 @@ envFrom:
     name: cloudflare-api-credentials
 
 service:
-  enabled: false
-  type: ClusterIP
-  port:
-    name: ""
-    protocol: TCP
-    port: ""
+  main:
+    enabled: false
 
 persistence:
   config:
@@ -30,7 +25,10 @@ persistence:
     mountPath: /config
 
 ingress:
-  enabled: false
+  # -- Enable and configure ingress settings for the chart under this key.
+  # @default -- See values.yaml
+  main:
+    enabled: false
 
 probes:
   liveness:

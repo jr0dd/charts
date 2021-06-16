@@ -3,10 +3,9 @@ image:
   pullPolicy: IfNotPresent
   tag: "latest"
 
-replicas: 1
-
-strategy:
-  type: Recreate
+controller:
+  enabled: true
+  replicas: 1
 
 env:
   TZ: "America/New_York"
@@ -19,13 +18,14 @@ env:
   DISPLAY_HEIGHT: "1440"
 
 service:
-  enabled: true
-  type: ClusterIP
-  #externalTrafficPolicy: Local
-  port:
-    name: mkvtoolnix
-    protocol: TCP
-    port: 5800
+  main:
+    enabled: true
+    type: ClusterIP
+    ports:
+      http:
+        enabled: true
+        port: 5800
+        protocol: HTTP
 
 persistence:
   config:
@@ -36,9 +36,7 @@ persistence:
     mountPath: /storage
 
 ingress:
-  enabled: false
-
-probes:
-  startup:
-    spec:
-      initialDelaySeconds: 30
+  # -- Enable and configure ingress settings for the chart under this key.
+  # @default -- See values.yaml
+  main:
+    enabled: false

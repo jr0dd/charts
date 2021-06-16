@@ -1,8 +1,8 @@
 apiVersion: v2
-appVersion: "57.0.0"
+appVersion: "58.0.0"
 description: Docker container for MKVToolNix
 name: mkvtoolnix
-version: 3.0.0
+version: 3.1.1
 kubeVersion: ">=1.16.0-0"
 keywords:
   - video editing
@@ -13,5 +13,5 @@ sources:
 icon: https://images.weserv.nl/?url=raw.githubusercontent.com/jlesage/docker-templates/master/jlesage/images/mkvtoolnix-icon.png
 dependencies:
 - name: common
-  version: 3.0.0
+  version: 3.1.1
   repository: https://library-charts.k8s-at-home.com
