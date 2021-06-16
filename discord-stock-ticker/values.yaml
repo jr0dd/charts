@@ -93,6 +93,7 @@ config: |
   COLOR="true"
   FLASH="true"
   PERCENT="true"
+  ARROWS="true"
 
   curl -X POST \
   "localhost:8080/ticker" \
@@ -105,7 +106,8 @@ config: |
      \"set_nickname\":${NICK}, \
      \"set_color\":${COLOR}, \
      \"flash_change\":${FLASH}, \
-     \"percentage\":${PERCENT}}"
+     \"percentage\":${PERCENT}, \
+     \"arrows\":${ARROWS}}"
 
   curl -X POST \
   "localhost:8080/ticker" \
@@ -118,4 +120,5 @@ config: |
      \"set_nickname\":${NICK}, \
      \"set_color\":${COLOR}, \
      \"flash_change\":${FLASH}, \
-     \"percentage\":${PERCENT}}"
+     \"percentage\":${PERCENT}, \
+     \"arrows\":${ARROWS}}"
