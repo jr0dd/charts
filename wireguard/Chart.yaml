@@ -2,18 +2,18 @@ apiVersion: v2
 appVersion: "v1.0.20210424"
 description: a simple wireguard container
 name: wireguard
-version: 4.1.1
+version: 4.2.0
 kubeVersion: ">=1.16.0-0"
 keywords:
-  - vpn
-  - privacy
-  - security
-  - wireguard
+- vpn
+- privacy
+- security
+- wireguard
 sources:
 - https://github.com/k8s-at-home/container-images
 - https://www.wireguard.com/repositories/
 icon: https://symbols.getvecta.com/stencil_101/70_wireguard-icon.5e959a20f0.jpg
 dependencies:
 - name: common
-  version: 3.1.1
+  version: 3.2.0
   repository: https://library-charts.k8s-at-home.com

@@ -49,38 +49,6 @@ ingress:
   main:
     enabled: false
 
-probes:
-  liveness:
-    enabled: true
-    custom: true
-    spec:
-      exec:
-        command: ["bash", "-c", "if [[ $(curl -s localhost:8080/ticker | jq -r | wc -l) -gt 1 ]]; then exit 0; fi"]
-      initialDelaySeconds: 0
-      periodSeconds: 10
-      timeoutSeconds: 1
-      failureThreshold: 3
-  readiness:
-    enabled: true
-    custom: true
-    spec:
-      exec:
-        command: ["bash", "-c", "if [[ $(curl -s localhost:8080/ticker | jq -r | wc -l) -ge 1 ]]; then exit 0; fi"]
-      initialDelaySeconds: 0
-      periodSeconds: 10
-      timeoutSeconds: 1
-      failureThreshold: 3  
-  startup:
-    enabled: true
-    custom: true
-    spec:
-      exec:
-        command: ["bash", "-c", "if [[ $(curl -s localhost:8080/ticker | jq -r | wc -l) -ge 1 ]]; then exit 0; fi"]
-      initialDelaySeconds: 0
-      timeoutSeconds: 2
-      periodSeconds: 5
-      failureThreshold: 3
-
 config: |
   #!/usr/bin/env bash
   set -eu
@@ -96,7 +64,7 @@ config: |
   ARROWS="true"
 
   curl -X POST \
-  "localhost:8080/ticker" \
+  "localhost:8181/ticker" \
   -H "Content-Type: application/json" \
   -d "{\"ticker\":\"BTC\", \
      \"name\":\"bitcoin\", \
@@ -110,7 +78,7 @@ config: |
      \"arrows\":${ARROWS}}"
 
   curl -X POST \
-  "localhost:8080/ticker" \
+  "localhost:8181/ticker" \
   -H "Content-Type: application/json" \
   -d "{\"ticker\":\"AMC\", \
      \"name\":\"AMC\", \
