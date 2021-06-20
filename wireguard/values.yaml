@@ -70,3 +70,18 @@ probes:
       timeoutSeconds: 2
       periodSeconds: 10
       failureThreshold: 5
+
+# Use the following site to easily generate configs
+# https://www.wireguardconfig.com
+config: |
+  [Interface]
+  Address = 10.0.0.1/28
+  ListenPort = 51820
+  PrivateKey = ABCDEFGHIJK=
+  PostUp = iptables -A FORWARD -i %i -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+  PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
+  
+  [Peer]
+  PublicKey = ABCDEFGHIJK=
+  PresharedKey = ABCDEFGHIJK=
+  AllowedIPs = 10.0.0.2/32

@@ -49,6 +49,15 @@ ingress:
   main:
     enabled: false
 
+probes:
+  liveness:
+    enabled: true
+    custom: true
+    spec:
+      httpGet:
+        path: /ticker
+        port: 8080
+
 config: |
   #!/usr/bin/env bash
   set -eu
@@ -64,7 +73,7 @@ config: |
   ARROWS="true"
 
   curl -X POST \
-  "localhost:8181/ticker" \
+  "localhost:8080/ticker" \
   -H "Content-Type: application/json" \
   -d "{\"ticker\":\"BTC\", \
      \"name\":\"bitcoin\", \
@@ -78,7 +87,7 @@ config: |
      \"arrows\":${ARROWS}}"
 
   curl -X POST \
-  "localhost:8181/ticker" \
+  "localhost:8080/ticker" \
   -H "Content-Type: application/json" \
   -d "{\"ticker\":\"AMC\", \
      \"name\":\"AMC\", \
