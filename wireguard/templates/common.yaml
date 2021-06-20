@@ -4,7 +4,7 @@
 {{/* Append the configMap volume to the volumes */}}
 {{- define "wireguard.configVolume" -}}
 enabled: "true"
-mountPath: "/etc/wireguard/wg0.conf"
+mountPath: "/config/wg0.conf"
 subPath: "wg0.conf"
 type: "custom"
 volumeSpec:
