@@ -1,7 +1,7 @@
 image:
   repository: pihole/pihole
   pullPolicy: IfNotPresent
-  tag: "latest"
+  tag: "v5.8.1"
 
 controller:
   enabled: true

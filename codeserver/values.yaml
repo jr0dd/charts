@@ -1,7 +1,7 @@
 image:
   repository: codercom/code-server
   pullPolicy: IfNotPresent
-  tag: "latest"
+  tag: "v3.10.0"
 
 controller:
   enabled: true
