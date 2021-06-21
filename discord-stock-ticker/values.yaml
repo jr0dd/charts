@@ -1,7 +1,7 @@
 image:
   repository: ghcr.io/jr0dd/discord-stock-ticker
   pullPolicy: IfNotPresent
-  tag: "latest"
+  tag: "v2.5.2"
 
 lifecycle:
   postStart:
@@ -35,7 +35,7 @@ service:
     ports:
       http:
         enabled: true
-        port: 8080
+        port: 8585
         protocol: HTTP
 
 persistence:
@@ -56,7 +56,7 @@ probes:
     spec:
       httpGet:
         path: /ticker
-        port: 8080
+        port: 8585
 
 config: |
   #!/usr/bin/env bash
@@ -73,7 +73,7 @@ config: |
   ARROWS="true"
 
   curl -X POST \
-  "localhost:8080/ticker" \
+  "localhost:8585/ticker" \
   -H "Content-Type: application/json" \
   -d "{\"ticker\":\"BTC\", \
      \"name\":\"bitcoin\", \
@@ -87,7 +87,7 @@ config: |
      \"arrows\":${ARROWS}}"
 
   curl -X POST \
-  "localhost:8080/ticker" \
+  "localhost:8585/ticker" \
   -H "Content-Type: application/json" \
   -d "{\"ticker\":\"AMC\", \
      \"name\":\"AMC\", \

@@ -1,7 +1,7 @@
 image:
-  repository: ghcr.io/linuxserver/wireguard
+  repository: ghcr.io/k8s-at-home/wireguard
   pullPolicy: IfNotPresent
-  tag: "latest"
+  tag: "v1.0.20210424"
 
 controller:
   enabled: true
@@ -23,7 +23,7 @@ service:
 persistence:
   config:
     enabled: false
-    mountPath: /config
+    mountPath: /etc/wireguard
 
 ingress:
   # -- Enable and configure ingress settings for the chart under this key.
