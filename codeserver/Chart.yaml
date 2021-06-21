@@ -1,5 +1,5 @@
 apiVersion: v2
-appVersion: "v3.10.0"
+appVersion: "3.10.0"
 description: VS Code in the browser
 name: codeserver
 version: 5.2.0

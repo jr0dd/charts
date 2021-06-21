@@ -1,5 +1,5 @@
 apiVersion: v2
-appVersion: "v1.0.20210424"
+appVersion: "1.0.20210424"
 description: a simple wireguard container
 name: wireguard
 version: 7.2.0

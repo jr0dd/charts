@@ -35,7 +35,7 @@ service:
     ports:
       http:
         enabled: true
-        port: 8585
+        port: 8080
         protocol: HTTP
 
 persistence:
@@ -56,7 +56,7 @@ probes:
     spec:
       httpGet:
         path: /ticker
-        port: 8585
+        port: 8080
 
 config: |
   #!/usr/bin/env bash
@@ -73,7 +73,7 @@ config: |
   ARROWS="true"
 
   curl -X POST \
-  "localhost:8585/ticker" \
+  "localhost:8080/ticker" \
   -H "Content-Type: application/json" \
   -d "{\"ticker\":\"BTC\", \
      \"name\":\"bitcoin\", \
@@ -87,7 +87,7 @@ config: |
      \"arrows\":${ARROWS}}"
 
   curl -X POST \
-  "localhost:8585/ticker" \
+  "localhost:8080/ticker" \
   -H "Content-Type: application/json" \
   -d "{\"ticker\":\"AMC\", \
      \"name\":\"AMC\", \
