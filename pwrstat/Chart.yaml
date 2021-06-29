@@ -1,0 +1,18 @@
+apiVersion: v2
+appVersion: "1.3.3"
+description:  CyberPower PowerStat Docker
+name: pwrstat
+version: 1.0.0
+kubeVersion: ">=1.16.0-0"
+keywords:
+- ups
+- power
+- monitoring
+sources:
+- https://github.com/DanielWinks/pwrstat_docker
+- https://github.com/jr0dd/charts/pwrstat
+icon: https://dl4jz3rbrsfum.cloudfront.net/images/logos/cp_logo_red_3.svg
+dependencies:
+- name: common
+  version: 3.2.0
+  repository: https://library-charts.k8s-at-home.com

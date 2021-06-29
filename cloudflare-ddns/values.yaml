@@ -6,6 +6,7 @@ image:
 controller:
   enabled: true
   replicas: 1
+  strategy: RollingUpdate
 
 env:
   TZ: "America/New_York"
