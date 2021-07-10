@@ -10,6 +10,8 @@ controller:
 
 env:
   TZ: "America/New_York"
+  IPTABLES_BACKEND: "nft"
+  KILLSWITCH: "false"
 
 service:
   main:
@@ -17,26 +19,17 @@ service:
     type: ClusterIP
     ports:
       http:
+        enabled: false
+      vpn:
         enabled: true
         port: 51820
         protocol: UDP
 
-persistence:
-  config:
-    enabled: false
-    mountPath: /etc/wireguard
-
-ingress:
-  # -- Enable and configure ingress settings for the chart under this key.
-  # @default -- See values.yaml
-  main:
-    enabled: false
-
 securityContext:
   capabilities:
     add:
-      - NET_ADMIN
-      - SYS_MODULE
+    - NET_ADMIN
+    - SYS_MODULE
 
 probes:
   liveness:
@@ -74,15 +67,5 @@ probes:
 
 # Use the following site to easily generate configs
 # https://www.wireguardconfig.com
-config: |
-  [Interface]
-  Address = 10.0.0.1/28
-  ListenPort = 51820
-  PrivateKey = ABCDEFGHIJK=
-  PostUp = iptables -A FORWARD -i %i -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-  PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
-  
-  [Peer]
-  PublicKey = ABCDEFGHIJK=
-  PresharedKey = ABCDEFGHIJK=
-  AllowedIPs = 10.0.0.2/32
+configSecret: |
+  # place base64 encoded wg0.conf here

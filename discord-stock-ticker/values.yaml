@@ -1,7 +1,7 @@
 image:
   repository: ghcr.io/jr0dd/discord-stock-ticker
   pullPolicy: IfNotPresent
-  tag: "v2.5.2"
+  tag: "v2.7.2"
 
 lifecycle:
   postStart:
@@ -15,19 +15,6 @@ controller:
 
 env:
   TZ: "America/New_York"
-  #SET_NICKNAME: "1"
-  #FREQUENCY: "5"
-  #SET_COLOR: "1"
-  #FLASH_CHANGE: "1"
-  #CRYPTO_NAME: "bitcoin"
-  #TICKER: "BTC"
-  #DISCORD_BOT_TOKEN: "CHANGEME"
-  #PERCENTAGE: "1"
-  #ARROWS: "1"
-  
-envFrom:
-- secretRef:
-    name: discord-tokens
 
 service:
   main:
@@ -39,39 +26,37 @@ service:
         port: 8080
         protocol: HTTP
 
-persistence:
-  config:
-    enabled: false
-    mountPath: /config
-
-ingress:
-  # -- Enable and configure ingress settings for the chart under this key.
-  # @default -- See values.yaml
-  main:
-    enabled: false
-
-probes:
-  liveness:
+prometheus:
+  serviceMonitor:
     enabled: true
-    custom: true
-    spec:
-      httpGet:
-        path: /ticker
-        port: 8080
+    interval: 10s
+    port: http
+    path: /metrics
+    namespace: monitoring
+    additionalLabels:
+      release: kube-prometheus-stack
+  prometheusRule:
+    enabled: true
+    namespace: monitoring
+    additionalLabels:
+      release: kube-prometheus-stack
 
+### Add your discord tokens here to store them in a secret file
+### They will also be added as an env var
+secret:
+  GME: XXXXXXXXXXXXXXXXXX
+  BTC: XXXXXXXXXXXXXXXXXX
+
+### Add as many tickers as you want below 
+### They will be delivered to the API on container start
 config: |
   #!/usr/bin/env bash
   set -eu
-  
-  # Just copy and paste the below samples and change 
-  # the ticker, name, discord_bot_token values appropriately
 
-  FREQ="6"
+  FREQ="10"
   NICK="true"
   COLOR="true"
-  FLASH="true"
-  PERCENT="true"
-  ARROWS="true"
+  ACTIVITY=""
 
   curl -X POST \
   "localhost:8080/ticker" \
@@ -83,20 +68,16 @@ config: |
      \"frequency\":${FREQ}, \
      \"set_nickname\":${NICK}, \
      \"set_color\":${COLOR}, \
-     \"flash_change\":${FLASH}, \
-     \"percentage\":${PERCENT}, \
-     \"arrows\":${ARROWS}}"
+     \"bitcoin\":false, \
+     \"activity\":\"${ACTIVITY}\"}"
 
   curl -X POST \
   "localhost:8080/ticker" \
   -H "Content-Type: application/json" \
-  -d "{\"ticker\":\"AMC\", \
-     \"name\":\"AMC\", \
-     \"discord_bot_token\":\"${AMC}\", \
-     \"crypto\":false, \
+  -d "{\"ticker\":\"GME\", \
+     \"name\":\"GME\", \
+     \"discord_bot_token\":\"${GME}\", \
      \"frequency\":${FREQ}, \
      \"set_nickname\":${NICK}, \
      \"set_color\":${COLOR}, \
-     \"flash_change\":${FLASH}, \
-     \"percentage\":${PERCENT}, \
-     \"arrows\":${ARROWS}}"
+     \"activity\":\"${ACTIVITY}\"}"
