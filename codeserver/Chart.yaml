@@ -2,7 +2,7 @@ apiVersion: v2
 appVersion: "3.10.0"
 description: VS Code in the browser
 name: codeserver
-version: 5.2.0
+version: 5.3.0
 kubeVersion: ">=1.16.0-0"
 keywords:
 - coding
@@ -12,5 +12,5 @@ sources:
 icon: https://github.com/cdr/code-server/blob/main/src/browser/media/pwa-icon.png
 dependencies:
 - name: common
-  version: 3.2.0
+  version: 3.3.0
   repository: https://library-charts.k8s-at-home.com
