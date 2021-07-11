@@ -25,7 +25,7 @@ spec:
       annotations:
         description: Bots will be down until {{ template "common.names.fullname" . }} is back up
         summary: {{ template "common.names.fullname" . }} has disappeared from Prometheus service discovery.
-    - alert: DiscordStockTickerAbsent
+    - alert: ZeroTickers
       expr: ticker_count == 0
       for: 5m
       labels:
