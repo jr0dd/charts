@@ -3,7 +3,7 @@ entries:
   discord-stock-ticker:
   - apiVersion: v2
     appVersion: 3.2.0
-    created: "2021-08-01T22:50:40.575014412-04:00"
+    created: "2021-08-02T07:23:03.261464692-04:00"
     dependencies:
     - name: common
       repository: https://library-charts.k8s-at-home.com
@@ -28,7 +28,28 @@ entries:
   mkvtoolnix:
   - apiVersion: v2
     appVersion: 58.0.0
-    created: "2021-08-01T22:50:40.577845723-04:00"
+    created: "2021-08-02T07:23:03.269503524-04:00"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 3.3.0
+    description: Docker container for MKVToolNix
+    digest: 38578d38df75d49406e59c243da4be008451e8a05d0ff203c59ae3bb952a5456
+    icon: https://images.weserv.nl/?url=raw.githubusercontent.com/jlesage/docker-templates/master/jlesage/images/mkvtoolnix-icon.png
+    keywords:
+    - video editing
+    - mkv
+    kubeVersion: '>=1.16.0-0'
+    name: mkvtoolnix
+    sources:
+    - https://github.com/jlesage/docker-mkvtoolnix
+    - https://mkvtoolnix.download/source.html
+    urls:
+    - mkvtoolnix-3.4.1.tgz
+    version: 3.4.1
+  - apiVersion: v2
+    appVersion: 58.0.0
+    created: "2021-08-02T07:23:03.266186436-04:00"
     dependencies:
     - name: common
       repository: https://library-charts.k8s-at-home.com
@@ -50,7 +71,7 @@ entries:
   wireguard:
   - apiVersion: v2
     appVersion: 1.0.20210424
-    created: "2021-08-01T22:50:40.580975796-04:00"
+    created: "2021-08-02T07:23:03.272517732-04:00"
     dependencies:
     - name: common
       repository: https://library-charts.k8s-at-home.com
@@ -71,4 +92,4 @@ entries:
     urls:
     - wireguard-8.4.0.tgz
     version: 8.4.0
-generated: "2021-08-01T22:50:40.570370908-04:00"
+generated: "2021-08-02T07:23:03.252500141-04:00"
