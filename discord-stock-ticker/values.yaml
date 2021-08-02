@@ -1,0 +1,79 @@
+image:
+  repository: ghcr.io/jr0dd/discord-stock-ticker
+  pullPolicy: IfNotPresent
+  tag: "v3.2.0"
+
+lifecycle:
+  postStart:
+    exec:
+      command: ["bash", "/app/config.sh"]
+
+controller:
+  enabled: true
+  replicas: 1
+  strategy: RollingUpdate
+
+env:
+  TZ: "America/New_York"
+
+service:
+  main:
+    enabled: true
+    type: ClusterIP
+    ports:
+      http:
+        enabled: true
+        port: 8080
+        protocol: HTTP
+
+prometheus:
+  serviceMonitor:
+    enabled: true
+    interval: 10s
+    port: http
+    path: /metrics
+    additionalLabels: {}
+  prometheusRule:
+    enabled: true
+    additionalLabels: {}
+
+### Add your discord tokens here to store them in a secret file
+### They will also be added as an env var
+# secret:
+#   GME: XXXXXXXXXXXXXXXXXX
+#   BTC: XXXXXXXXXXXXXXXXXX
+
+### Add as many tickers as you want below 
+### They will be delivered to the API on container start
+config: |
+  #!/usr/bin/env bash
+  set -eu
+
+  FREQ="10"
+  NICK="true"
+  COLOR="true"
+  ACTIVITY=""
+
+  curl -X POST \
+  "localhost:8080/ticker" \
+  -H "Content-Type: application/json" \
+  -d "{\"ticker\":\"BTC\", \
+     \"name\":\"bitcoin\", \
+     \"discord_bot_token\":\"${BTC}\", \
+     \"crypto\":true, \
+     \"frequency\":${FREQ}, \
+     \"set_nickname\":${NICK}, \
+     \"set_color\":${COLOR}, \
+     \"bitcoin\":false, \
+     \"activity\":\"${ACTIVITY}\"}"
+
+  curl -X POST \
+  "localhost:8080/ticker" \
+  -H "Content-Type: application/json" \
+  -d "{\"ticker\":\"GME\", \
+     \"name\":\"GME\", \
+     \"discord_bot_token\":\"${GME}\", \
+     \"frequency\":${FREQ}, \
+     \"set_nickname\":${NICK}, \
+     \"set_color\":${COLOR}, \
+     \"activity\":\"${ACTIVITY}\"}"

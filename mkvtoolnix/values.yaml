@@ -1,0 +1,43 @@
+image:
+  repository: jlesage/mkvtoolnix
+  pullPolicy: IfNotPresent
+  tag: "1.54.0"
+
+controller:
+  enabled: true
+  replicas: 1
+  strategy: RollingUpdate
+
+env:
+  TZ: "America/New_York"
+  USER_ID: "568"
+  GROUP_ID: "568"
+  #SUB_GROUP_IDS: ""
+  #UMASK: ""
+  KEEP_APP_RUNNING: "1"
+  DISPLAY_WIDTH: "2560"
+  DISPLAY_HEIGHT: "1440"
+
+service:
+  main:
+    enabled: true
+    type: ClusterIP
+    ports:
+      http:
+        enabled: true
+        port: 5800
+        protocol: HTTP
+
+persistence:
+  config:
+    enabled: false
+    mountPath: /config
+  storage:
+    enabled: false
+    mountPath: /storage
+
+ingress:
+  # -- Enable and configure ingress settings for the chart under this key.
+  # @default -- See values.yaml
+  main:
+    enabled: false

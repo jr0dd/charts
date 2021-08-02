@@ -1,0 +1,18 @@
+{{/* Make sure all variables are set properly */}}                                                                                                                                                                          
+{{- include "common.values.setup" . }}
+
+{{/* Append the configMap volume to the volumes */}}
+{{- define "discord-stock-ticker.configVolume" -}}
+enabled: "true"
+mountPath: "/app/config.sh"
+subPath: "config.sh"
+type: "custom"
+volumeSpec:
+  configMap:
+    defaultMode: 0755
+    name: {{ include "common.names.fullname" . }}-config
+{{- end -}}
+{{- $_ := set .Values.persistence "discord-stock-ticker-config" (include "discord-stock-ticker.configVolume" . | fromYaml) -}}
+
+{{/* Render the templates */}}
+{{ include "common.all" . }}

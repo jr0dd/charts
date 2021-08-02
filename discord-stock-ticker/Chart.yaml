@@ -1,0 +1,20 @@
+apiVersion: v2
+appVersion: "3.2.0"
+description: discord stock ticker bot
+name: discord-stock-ticker
+version: 10.0.0
+kubeVersion: ">=1.16.0-0"
+keywords:
+- bot
+- stocks
+- crypto
+- discord
+sources:
+- https://github.com/rssnyder/discord-stock-ticker
+- https://github.com/jr0dd/charts/discord-stock-ticker
+- https://github.com/jr0dd/container-images
+icon: https://yt3.ggpht.com/a/AATXAJyg-fbSlEWGUgmsY_0DBQKQThY_Shh_yHGGAQ=s900-c-k-c0xffffffff-no-rj-mo
+dependencies:
+- name: common
+  version: 3.3.0
+  repository: https://library-charts.k8s-at-home.com

@@ -1,0 +1,36 @@
+{{- if .Values.prometheus.prometheusRule.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: {{ template "common.names.fullname" . }}.rules
+  {{- if .Values.prometheus.prometheusRule.namespace }}
+  namespace: {{ .Values.prometheus.prometheusRule.namespace | quote }}
+  {{- else }}
+  namespace: {{ .Release.Namespace | quote }}
+  {{- end }}
+  labels:
+    {{- include "common.labels" . | nindent 4 }}
+    {{- with .Values.prometheus.prometheusRule.additionalLabels }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+spec:
+  groups:
+  - name: {{ template "common.names.fullname" . }}.rules
+    rules:
+    - alert: DiscordStockTickerAbsent
+      expr: absent(up{job="{{ template "common.names.fullname" . }}"})
+      for: 5m
+      labels:
+        severity: critical
+      annotations:
+        description: Bots will be down until {{ template "common.names.fullname" . }} is back up
+        summary: {{ template "common.names.fullname" . }} has disappeared from Prometheus service discovery.
+    - alert: ZeroTickers
+      expr: ticker_count == 0
+      for: 5m
+      labels:
+        severity: critical
+      annotations:
+        description: Bot is not reporting any tickers in the api
+        summary: Bot has 0 tickers
+{{- end }}

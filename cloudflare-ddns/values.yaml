@@ -1,0 +1,64 @@
+image:
+  repository: ghcr.io/jr0dd/cloudflare-ddns
+  pullPolicy: IfNotPresent
+  tag: "v3.1.0"
+
+controller:
+  enabled: true
+  replicas: 1
+  strategy: RollingUpdate
+
+env:
+  TZ: "America/New_York"
+  CRON: "*/15 * * * *"
+
+envFrom:
+- secretRef: 
+    name: cloudflare-api-credentials
+
+service:
+  main:
+    enabled: false
+
+persistence:
+  config:
+    enabled: false
+    mountPath: /config
+
+ingress:
+  # -- Enable and configure ingress settings for the chart under this key.
+  # @default -- See values.yaml
+  main:
+    enabled: false
+
+probes:
+  liveness:
+    enabled: true
+    custom: true
+    spec:
+      exec:
+        command: ["bash", "-c", "if [[ $(pidof cron) ]]; then exit 0; fi"]
+      initialDelaySeconds: 0
+      timeoutSeconds: 1
+      periodSeconds: 5
+      failureThreshold: 5
+  readiness:
+    enabled: true
+    custom: true
+    spec:
+      exec:
+        command: ["bash", "-c", "if crontab -l | grep -q 'ddns'; then exit 0; fi"]
+      initialDelaySeconds: 0
+      timeoutSeconds: 1
+      periodSeconds: 5
+      failureThreshold: 3
+  startup:
+    enabled: true
+    custom: true
+    spec:
+      exec:
+        command: ["bash", "-c", "if crontab -l | grep -q 'API'; then exit 0; fi"] 
+      initialDelaySeconds: 5
+      timeoutSeconds: 2
+      periodSeconds: 10
+      failureThreshold: 3

@@ -1,0 +1,17 @@
+apiVersion: v2
+appVersion: "5.8.1"
+description: A black hole for Internet advertisements
+name: pihole
+version: 3.3.0
+kubeVersion: ">=1.16.0-0"
+keywords:
+- dns
+- pihole
+- security
+sources:
+- https://github.com/pi-hole/docker-pi-hole
+icon: https://pi-hole.github.io/graphics/Vortex/Vortex_with_Wordmark.svg
+dependencies:
+- name: common
+  version: 3.3.0
+  repository: https://library-charts.k8s-at-home.com
