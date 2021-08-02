@@ -45,35 +45,35 @@ prometheus:
 
 ### Add as many tickers as you want below 
 ### They will be delivered to the API on container start
-config: |
-  #!/usr/bin/env bash
-  set -eu
+# config: |
+#   #!/usr/bin/env bash
+#   set -eu
 
-  FREQ="10"
-  NICK="true"
-  COLOR="true"
-  ACTIVITY=""
+#   FREQ="10"
+#   NICK="true"
+#   COLOR="true"
+#   ACTIVITY=""
 
-  curl -X POST \
-  "localhost:8080/ticker" \
-  -H "Content-Type: application/json" \
-  -d "{\"ticker\":\"BTC\", \
-     \"name\":\"bitcoin\", \
-     \"discord_bot_token\":\"${BTC}\", \
-     \"crypto\":true, \
-     \"frequency\":${FREQ}, \
-     \"set_nickname\":${NICK}, \
-     \"set_color\":${COLOR}, \
-     \"bitcoin\":false, \
-     \"activity\":\"${ACTIVITY}\"}"
+#   curl -X POST \
+#   "localhost:8080/ticker" \
+#   -H "Content-Type: application/json" \
+#   -d "{\"ticker\":\"BTC\", \
+#      \"name\":\"bitcoin\", \
+#      \"discord_bot_token\":\"${BTC}\", \
+#      \"crypto\":true, \
+#      \"frequency\":${FREQ}, \
+#      \"set_nickname\":${NICK}, \
+#      \"set_color\":${COLOR}, \
+#      \"bitcoin\":false, \
+#      \"activity\":\"${ACTIVITY}\"}"
 
-  curl -X POST \
-  "localhost:8080/ticker" \
-  -H "Content-Type: application/json" \
-  -d "{\"ticker\":\"GME\", \
-     \"name\":\"GME\", \
-     \"discord_bot_token\":\"${GME}\", \
-     \"frequency\":${FREQ}, \
-     \"set_nickname\":${NICK}, \
-     \"set_color\":${COLOR}, \
-     \"activity\":\"${ACTIVITY}\"}"
+#   curl -X POST \
+#   "localhost:8080/ticker" \
+#   -H "Content-Type: application/json" \
+#   -d "{\"ticker\":\"GME\", \
+#      \"name\":\"GME\", \
+#      \"discord_bot_token\":\"${GME}\", \
+#      \"frequency\":${FREQ}, \
+#      \"set_nickname\":${NICK}, \
+#      \"set_color\":${COLOR}, \
+#      \"activity\":\"${ACTIVITY}\"}"
