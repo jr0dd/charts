@@ -67,5 +67,5 @@ probes:
 
 # Use the following site to easily generate configs
 # https://www.wireguardconfig.com
-configSecret: |
-  # place base64 encoded wg0.conf here
+# configSecret: |
+#   # place base64 encoded wg0.conf here

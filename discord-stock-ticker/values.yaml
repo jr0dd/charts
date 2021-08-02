@@ -1,7 +1,7 @@
 image:
   repository: ghcr.io/jr0dd/discord-stock-ticker
   pullPolicy: IfNotPresent
-  tag: "v2.7.2"
+  tag: "v3.2.0"
 
 lifecycle:
   postStart:
@@ -32,20 +32,16 @@ prometheus:
     interval: 10s
     port: http
     path: /metrics
-    namespace: monitoring
-    additionalLabels:
-      release: kube-prometheus-stack
+    additionalLabels: {}
   prometheusRule:
     enabled: true
-    namespace: monitoring
-    additionalLabels:
-      release: kube-prometheus-stack
+    additionalLabels: {}
 
 ### Add your discord tokens here to store them in a secret file
 ### They will also be added as an env var
-secret:
-  GME: XXXXXXXXXXXXXXXXXX
-  BTC: XXXXXXXXXXXXXXXXXX
+# secret:
+#   GME: XXXXXXXXXXXXXXXXXX
+#   BTC: XXXXXXXXXXXXXXXXXX
 
 ### Add as many tickers as you want below 
 ### They will be delivered to the API on container start

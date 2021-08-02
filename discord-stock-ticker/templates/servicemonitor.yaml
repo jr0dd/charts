@@ -22,13 +22,8 @@ spec:
     matchNames:
       - {{ .Release.Namespace | quote }}
   endpoints:
-  - port: {{ .Values.prometheus.serviceMonitor.port }}
-    {{- if .Values.prometheus.serviceMonitor.targetPort }}
-    targetPort: {{ .Values.prometheus.serviceMonitor.targetPort }}
-    {{- end }}
-    {{- if .Values.prometheus.serviceMonitor.path }}
-    path: {{ .Values.prometheus.serviceMonitor.path }}
-    {{- end }}
+  - targetPort: http
+    path: /metrics
     {{- if .Values.prometheus.serviceMonitor.interval }}
     interval: {{ .Values.prometheus.serviceMonitor.interval }}
     {{- end }}

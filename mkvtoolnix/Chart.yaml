@@ -2,7 +2,7 @@ apiVersion: v2
 appVersion: "58.0.0"
 description: Docker container for MKVToolNix
 name: mkvtoolnix
-version: 3.3.0
+version: 3.4.0
 kubeVersion: ">=1.16.0-0"
 keywords:
 - video editing
