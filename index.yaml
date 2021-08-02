@@ -3,7 +3,31 @@ entries:
   discord-stock-ticker:
   - apiVersion: v2
     appVersion: 3.2.0
-    created: "2021-08-02T07:23:03.261464692-04:00"
+    created: "2021-08-02T08:46:16.33985237-04:00"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 3.3.0
+    description: discord stock ticker bot
+    digest: 630c1578db9d50d747c066c5135d1d23a3dc6d4cb65b55bf5e9a510d725e14fa
+    icon: https://yt3.ggpht.com/a/AATXAJyg-fbSlEWGUgmsY_0DBQKQThY_Shh_yHGGAQ=s900-c-k-c0xffffffff-no-rj-mo
+    keywords:
+    - bot
+    - stocks
+    - crypto
+    - discord
+    kubeVersion: '>=1.16.0-0'
+    name: discord-stock-ticker
+    sources:
+    - https://github.com/rssnyder/discord-stock-ticker
+    - https://github.com/jr0dd/charts/discord-stock-ticker
+    - https://github.com/jr0dd/container-images
+    urls:
+    - discord-stock-ticker-10.0.1.tgz
+    version: 10.0.1
+  - apiVersion: v2
+    appVersion: 3.2.0
+    created: "2021-08-02T08:46:16.328590505-04:00"
     dependencies:
     - name: common
       repository: https://library-charts.k8s-at-home.com
@@ -28,7 +52,7 @@ entries:
   mkvtoolnix:
   - apiVersion: v2
     appVersion: 58.0.0
-    created: "2021-08-02T07:23:03.269503524-04:00"
+    created: "2021-08-02T08:46:16.347522525-04:00"
     dependencies:
     - name: common
       repository: https://library-charts.k8s-at-home.com
@@ -49,7 +73,7 @@ entries:
     version: 3.4.1
   - apiVersion: v2
     appVersion: 58.0.0
-    created: "2021-08-02T07:23:03.266186436-04:00"
+    created: "2021-08-02T08:46:16.343741407-04:00"
     dependencies:
     - name: common
       repository: https://library-charts.k8s-at-home.com
@@ -71,7 +95,7 @@ entries:
   wireguard:
   - apiVersion: v2
     appVersion: 1.0.20210424
-    created: "2021-08-02T07:23:03.272517732-04:00"
+    created: "2021-08-02T08:46:16.351720238-04:00"
     dependencies:
     - name: common
       repository: https://library-charts.k8s-at-home.com
@@ -92,4 +116,4 @@ entries:
     urls:
     - wireguard-8.4.0.tgz
     version: 8.4.0
-generated: "2021-08-02T07:23:03.252500141-04:00"
+generated: "2021-08-02T08:46:16.307790185-04:00"
