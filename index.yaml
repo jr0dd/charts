@@ -1,0 +1,74 @@
+apiVersion: v1
+entries:
+  discord-stock-ticker:
+  - apiVersion: v2
+    appVersion: 3.2.0
+    created: "2021-08-01T22:50:40.575014412-04:00"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 3.3.0
+    description: discord stock ticker bot
+    digest: 9b3f3de57733ded931fa24c48c1f9577c703e7ebb7cf2a355358f59a4e03dbfc
+    icon: https://yt3.ggpht.com/a/AATXAJyg-fbSlEWGUgmsY_0DBQKQThY_Shh_yHGGAQ=s900-c-k-c0xffffffff-no-rj-mo
+    keywords:
+    - bot
+    - stocks
+    - crypto
+    - discord
+    kubeVersion: '>=1.16.0-0'
+    name: discord-stock-ticker
+    sources:
+    - https://github.com/rssnyder/discord-stock-ticker
+    - https://github.com/jr0dd/charts/discord-stock-ticker
+    - https://github.com/jr0dd/container-images
+    urls:
+    - discord-stock-ticker-10.0.0.tgz
+    version: 10.0.0
+  mkvtoolnix:
+  - apiVersion: v2
+    appVersion: 58.0.0
+    created: "2021-08-01T22:50:40.577845723-04:00"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 3.3.0
+    description: Docker container for MKVToolNix
+    digest: 134a43f067c944e6c5ac1b45f2af70ff97e33db26800d47a0d549d3430dc0de6
+    icon: https://images.weserv.nl/?url=raw.githubusercontent.com/jlesage/docker-templates/master/jlesage/images/mkvtoolnix-icon.png
+    keywords:
+    - video editing
+    - mkv
+    kubeVersion: '>=1.16.0-0'
+    name: mkvtoolnix
+    sources:
+    - https://github.com/jlesage/docker-mkvtoolnix
+    - https://mkvtoolnix.download/source.html
+    urls:
+    - mkvtoolnix-3.4.0.tgz
+    version: 3.4.0
+  wireguard:
+  - apiVersion: v2
+    appVersion: 1.0.20210424
+    created: "2021-08-01T22:50:40.580975796-04:00"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 3.3.0
+    description: a simple wireguard container
+    digest: 44e0d686d93459e6d27230d202e8d8b188c20c29d894043476e82828a5afcc9c
+    icon: https://symbols.getvecta.com/stencil_101/70_wireguard-icon.5e959a20f0.jpg
+    keywords:
+    - vpn
+    - privacy
+    - security
+    - wireguard
+    kubeVersion: '>=1.16.0-0'
+    name: wireguard
+    sources:
+    - https://github.com/k8s-at-home/container-images/tree/main/apps/wireguard
+    - https://www.wireguard.com/repositories/
+    urls:
+    - wireguard-8.4.0.tgz
+    version: 8.4.0
+generated: "2021-08-01T22:50:40.570370908-04:00"
