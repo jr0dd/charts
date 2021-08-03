@@ -2,8 +2,32 @@ apiVersion: v1
 entries:
   discord-stock-ticker:
   - apiVersion: v2
+    appVersion: 3.3.0
+    created: "2021-08-03T18:34:36.715333707-04:00"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 3.3.0
+    description: discord stock ticker bot
+    digest: dd7fd3b19d27d3729092bba07946d155ac4ba0d2b02dc881d5876bd75058985f
+    icon: https://yt3.ggpht.com/a/AATXAJyg-fbSlEWGUgmsY_0DBQKQThY_Shh_yHGGAQ=s900-c-k-c0xffffffff-no-rj-mo
+    keywords:
+    - bot
+    - stocks
+    - crypto
+    - discord
+    kubeVersion: '>=1.16.0-0'
+    name: discord-stock-ticker
+    sources:
+    - https://github.com/rssnyder/discord-stock-ticker
+    - https://github.com/jr0dd/charts/discord-stock-ticker
+    - https://github.com/jr0dd/container-images
+    urls:
+    - discord-stock-ticker-10.0.2.tgz
+    version: 10.0.2
+  - apiVersion: v2
     appVersion: 3.2.0
-    created: "2021-08-02T08:46:16.33985237-04:00"
+    created: "2021-08-03T18:34:36.712150946-04:00"
     dependencies:
     - name: common
       repository: https://library-charts.k8s-at-home.com
@@ -27,7 +51,7 @@ entries:
     version: 10.0.1
   - apiVersion: v2
     appVersion: 3.2.0
-    created: "2021-08-02T08:46:16.328590505-04:00"
+    created: "2021-08-03T18:34:36.709587318-04:00"
     dependencies:
     - name: common
       repository: https://library-charts.k8s-at-home.com
@@ -52,7 +76,7 @@ entries:
   mkvtoolnix:
   - apiVersion: v2
     appVersion: 58.0.0
-    created: "2021-08-02T08:46:16.347522525-04:00"
+    created: "2021-08-03T18:34:36.721860723-04:00"
     dependencies:
     - name: common
       repository: https://library-charts.k8s-at-home.com
@@ -73,7 +97,7 @@ entries:
     version: 3.4.1
   - apiVersion: v2
     appVersion: 58.0.0
-    created: "2021-08-02T08:46:16.343741407-04:00"
+    created: "2021-08-03T18:34:36.719513885-04:00"
     dependencies:
     - name: common
       repository: https://library-charts.k8s-at-home.com
@@ -95,7 +119,7 @@ entries:
   wireguard:
   - apiVersion: v2
     appVersion: 1.0.20210424
-    created: "2021-08-02T08:46:16.351720238-04:00"
+    created: "2021-08-03T18:34:36.724222431-04:00"
     dependencies:
     - name: common
       repository: https://library-charts.k8s-at-home.com
@@ -116,4 +140,4 @@ entries:
     urls:
     - wireguard-8.4.0.tgz
     version: 8.4.0
-generated: "2021-08-02T08:46:16.307790185-04:00"
+generated: "2021-08-03T18:34:36.703062624-04:00"
