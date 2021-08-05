@@ -5,17 +5,17 @@ concurrency: helm-release
 on:
   workflow_dispatch:
   push:
-    branches:
+    branches: 
     - main
     paths:
-    - 'charts'
+    - 'charts/**'
 
 jobs:
   generate-readme:
     name: Auto-generate chart README
     runs-on: ubuntu-20.04
     steps:
-    - name: Get jr0dd token
+    - name: Get chart token
       id: get-app-token
       uses: getsentry/action-github-app-token@v1
       with:
@@ -35,7 +35,8 @@ jobs:
         list-files: shell
         filters: |
           addedOrModified:
-            - added|modified: 'charts/*'
+            - added|modified: 'charts/**'
+
     - name: Install Helm
       if: steps.filter.outputs.addedOrModified == 'true'
       uses: azure/setup-helm@v1
@@ -52,6 +53,7 @@ jobs:
       run: |
         wget -O /tmp/helm-docs.deb  https://github.com/norwoodj/helm-docs/releases/download/v1.5.0/helm-docs_1.5.0_linux_amd64.deb
         sudo dpkg -i /tmp/helm-docs.deb
+
     - name: Run against changed charts
       if: steps.filter.outputs.addedOrModified == 'true'
       run: |
@@ -74,6 +76,7 @@ jobs:
             fi
             echo ""
         done
+
     - name: Create commit
       if: steps.filter.outputs.addedOrModified == 'true'
       uses: stefanzweifel/git-auto-commit-action@v4
@@ -83,7 +86,7 @@ jobs:
         commit_user_name: jr0dd
         commit_user_email: jr0dd@users.noreply.github.com
         commit_author: j_r0dd <jr0dd@users.noreply.github.com>
-        file_pattern: charts/*/
+        file_pattern: charts/**/
 
   release:
     runs-on: ubuntu-20.04
@@ -108,10 +111,11 @@ jobs:
       run: |
         git config user.name "jr0dd"
         git config user.email "jr0dd@users.noreply.github.com"
+
     - name: Install Helm
-      uses: azure/setup-helm@v1
-      with:
-        version: v3.6.3
+        uses: azure/setup-helm@v1
+        with:
+          version: v3.4.0
 
     - name: Run chart-releaser
       uses: helm/chart-releaser-action@v1.2.1
@@ -120,7 +124,7 @@ jobs:
         charts_repo_url: https://jr0dd.github.io/charts/
       env:
         CR_TOKEN: "${{ steps.get-app-token.outputs.token }}"
-        CR_SKIP_EXISTING: "true"
+        CR_SKIP_EXISTING: "false"
 
   generate-summary:
     name: Auto-generate charts summary
@@ -128,7 +132,7 @@ jobs:
     needs:
     - release
     steps:
-    - name: Get charts token
+    - name: Get chart token
       id: get-app-token
       uses: getsentry/action-github-app-token@v1
       with:
@@ -150,6 +154,7 @@ jobs:
     - name: Run script
       run: |
         sudo bash hack/gen-chart-summary.sh
+
     - name: Create Commit
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
@@ -159,20 +164,3 @@ jobs:
         commit_user_email: jr0dd@users.noreply.github.com
         commit_author: j_r0dd <jr0dd@users.noreply.github.com>
         file_pattern: charts/README.md
-    
-  publish-chart:
-    runs-on: ubuntu-20.04
-    needs:
-    - generate-summary
-    steps:
-    - name: Get chart token
-      id: get-app-token
-      uses: getsentry/action-github-app-token@v1
-      with:
-        app_id: ${{ secrets.APP_ID }}
-        private_key: ${{ secrets.APP_PRIVATE_KEY }}
-    - name: Publish Chart
-      uses: J12934/helm-gh-pages-action@master
-      with:
-        access-token: ${{ steps.get-app-token.outputs.token }}
-        deploy-branch: main
