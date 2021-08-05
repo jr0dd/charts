@@ -1,0 +1,9 @@
+remote: origin
+target-branch: main
+helm-extra-args: --timeout 600s
+chart-dirs:
+- charts
+excluded-charts:
+chart-repos:
+- k8s-at-home-libraries=https://library-charts.k8s-at-home.com
+- jr0dd=https://jr0dd.github.io/charts/

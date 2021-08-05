@@ -1,7 +1,7 @@
 {
   "enabled": true,
   "dependencyDashboard": true,
-  "dependencyDashboardTitle": "Renovate Dashboard",
+  "dependencyDashboardTitle": "Renovate Dashboard 🤖",
   "assigneesFromCodeOwners": true,
   "reviewersFromCodeOwners": true,
   "suppressNotifications": ["prIgnoreNotification"],
