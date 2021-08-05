@@ -162,11 +162,13 @@ jobs:
     
   publish-chart:
     runs-on: ubuntu-20.04
+    needs:
+    - generate-summary
     steps:
     - name: Helm Publisher
       uses: stefanprodan/helm-gh-pages@v1.4.1
       with:
         token: ${{ steps.get-app-token.outputs.token }}
         charts_url: https://jr0dd.github.io/charts/
-        commit_user_name: jr0dd
-        commit_user_email: jr0dd@users.noreply.github.com
+        commit_username: jr0dd
+        commit_email: jr0dd@users.noreply.github.com
