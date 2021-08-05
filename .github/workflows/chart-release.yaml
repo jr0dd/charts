@@ -149,7 +149,7 @@ jobs:
 
     - name: Run script
       run: |
-        ./hack/gen-chart-summary.sh
+        sudo ./hack/gen-chart-summary.sh
     - name: Create Commit
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
