@@ -41,6 +41,20 @@ probes:
       timeoutSeconds: 1
       periodSeconds: 5
       failureThreshold: 5
+  
+  readiness:
+     enabled: true
+     custom: true
+     spec:
+       exec:
+         command: ["bash", "-c", "if wg | grep -q wg0; then exit 0; else exit $?; fi"]
+       initialDelaySeconds: 0
+       timeoutSeconds: 1
+       periodSeconds: 5
+       failureThreshold: 3
+
+   startup:
+     enabled: false
 
 # Use the following site to easily generate configs
 # https://www.wireguardconfig.com
