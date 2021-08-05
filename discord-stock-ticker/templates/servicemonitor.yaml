@@ -1,13 +1,9 @@
-{{- if .Values.prometheus.serviceMonitor.enabled }}
+{{- if .Values.prometheus.serviceMonitor.enabled -}}
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: {{ template "common.names.fullname" . }}
-  {{- if .Values.prometheus.serviceMonitor.namespace }}
-  namespace: {{ .Values.prometheus.serviceMonitor.namespace | quote }}
-  {{- else }}
   namespace: {{ .Release.Namespace | quote }}
-  {{- end }}
   labels:
     {{- include "common.labels" . | nindent 4 }}
     {{- with .Values.prometheus.serviceMonitor.additionalLabels }}

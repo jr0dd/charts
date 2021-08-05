@@ -16,7 +16,6 @@ env:
 service:
   main:
     enabled: true
-    type: ClusterIP
     ports:
       http:
         enabled: false
@@ -37,35 +36,15 @@ probes:
     custom: true
     spec:
       exec:
-        command: ["bash", "-c", "if wg | grep -q wg0 && cat /tmp/healthy == 'live'; then exit 0; fi"]
+        command: ["bash", "-c", "if [[ $(curl -s https://ipinfo.io) ]]; then exit 0; else exit $?; fi"]
       initialDelaySeconds: 0
       timeoutSeconds: 1
       periodSeconds: 5
-      failureThreshold: 5
-
-  readiness:
-    enabled: true
-    custom: true
-    spec:
-      exec:
-        command: ["bash", "-c", "if wg | grep -q wg0 && cat /tmp/healthy == 'ready'; then echo 'live' > /tmp/healthy; fi"]
-      initialDelaySeconds: 0
-      timeoutSeconds: 1
-      periodSeconds: 5
-      failureThreshold: 3
-
-  startup:
-    enabled: true
-    custom: true
-    spec:
-      exec:
-        command: ["bash", "-c", "if wg | grep -q wg0; then echo 'ready' > /tmp/healthy; fi"]
-      initialDelaySeconds: 5
-      timeoutSeconds: 2
-      periodSeconds: 10
       failureThreshold: 5
 
 # Use the following site to easily generate configs
 # https://www.wireguardconfig.com
-# configSecret: |
-#   # place base64 encoded wg0.conf here
+configSecret:
+  enabled: false
+  config: |
+    # place base64 encoded wg0.conf here

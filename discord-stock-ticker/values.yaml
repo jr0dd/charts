@@ -14,28 +14,34 @@ controller:
   strategy: RollingUpdate
 
 env:
-  TZ: "America/New_York"
+  TZ: "UTC"
 
 service:
   main:
-    enabled: true
-    type: ClusterIP
     ports:
       http:
-        enabled: true
         port: 8080
-        protocol: HTTP
 
 prometheus:
   serviceMonitor:
-    enabled: true
+    enabled: false
     interval: 10s
-    port: http
-    path: /metrics
     additionalLabels: {}
   prometheusRule:
-    enabled: true
+    enabled: false
     additionalLabels: {}
+
+probes:
+  liveness:
+    enabled: true
+    custom: true
+    spec:
+      exec:
+        command: ["bash", "-c", "if [[ $(curl -s https://discord.com) ]]; then exit 0; else exit $?; fi"]
+      initialDelaySeconds: 0
+      timeoutSeconds: 1
+      periodSeconds: 5
+      failureThreshold: 5
 
 ### Add your discord tokens here to store them in a secret file
 ### They will also be added as an env var
@@ -45,35 +51,37 @@ prometheus:
 
 ### Add as many tickers as you want below 
 ### They will be delivered to the API on container start
-# config: |
-#   #!/usr/bin/env bash
-#   set -eu
+configmap:
+  enabled: false
+  config: |
+    #!/usr/bin/env bash
+    set -eu
 
-#   FREQ="10"
-#   NICK="true"
-#   COLOR="true"
-#   ACTIVITY=""
+    FREQ="10"
+    NICK="true"
+    COLOR="true"
+    ACTIVITY=""
 
-#   curl -X POST \
-#   "localhost:8080/ticker" \
-#   -H "Content-Type: application/json" \
-#   -d "{\"ticker\":\"BTC\", \
-#      \"name\":\"bitcoin\", \
-#      \"discord_bot_token\":\"${BTC}\", \
-#      \"crypto\":true, \
-#      \"frequency\":${FREQ}, \
-#      \"set_nickname\":${NICK}, \
-#      \"set_color\":${COLOR}, \
-#      \"bitcoin\":false, \
-#      \"activity\":\"${ACTIVITY}\"}"
+    curl -X POST \
+    "localhost:8080/ticker" \
+    -H "Content-Type: application/json" \
+    -d "{\"ticker\":\"BTC\", \
+      \"name\":\"bitcoin\", \
+      \"discord_bot_token\":\"${BTC}\", \
+      \"crypto\":true, \
+      \"frequency\":${FREQ}, \
+      \"set_nickname\":${NICK}, \
+      \"set_color\":${COLOR}, \
+      \"bitcoin\":false, \
+      \"activity\":\"${ACTIVITY}\"}"
 
-#   curl -X POST \
-#   "localhost:8080/ticker" \
-#   -H "Content-Type: application/json" \
-#   -d "{\"ticker\":\"GME\", \
-#      \"name\":\"GME\", \
-#      \"discord_bot_token\":\"${GME}\", \
-#      \"frequency\":${FREQ}, \
-#      \"set_nickname\":${NICK}, \
-#      \"set_color\":${COLOR}, \
-#      \"activity\":\"${ACTIVITY}\"}"
+    curl -X POST \
+    "localhost:8080/ticker" \
+    -H "Content-Type: application/json" \
+    -d "{\"ticker\":\"GME\", \
+      \"name\":\"GME\", \
+      \"discord_bot_token\":\"${GME}\", \
+      \"frequency\":${FREQ}, \
+      \"set_nickname\":${NICK}, \
+      \"set_color\":${COLOR}, \
+      \"activity\":\"${ACTIVITY}\"}"

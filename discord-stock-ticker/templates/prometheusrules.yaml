@@ -1,4 +1,4 @@
-{{- if .Values.prometheus.prometheusRule.enabled }}
+{{- if .Values.prometheus.prometheusRule.enabled -}}
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
