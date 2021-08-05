@@ -16,7 +16,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        token: ${{ steps.get-app-token.outputs.token }}
+        token: ${{ secrets.MY_TOKEN || github.token }}
         ref: main
 
     - uses: dorny/paths-filter@v2
