@@ -46,7 +46,7 @@ probes:
      custom: true
      spec:
        exec:
-         command: ["bash", "-c", "if sudo /usr/bin/wg show | grep -q wg0; then exit 0; else exit $?; fi"]
+         command: ["bash", "-c", "if [[ -f /etc/wireguard/wg0.conf ]]; then exit 0; else exit $?; fi"]
        initialDelaySeconds: 0
        timeoutSeconds: 1
        periodSeconds: 5
