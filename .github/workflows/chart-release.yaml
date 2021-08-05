@@ -8,7 +8,7 @@ on:
     branches:
     - main
     paths:
-    - 'charts'
+    - 'charts/*'
 
 jobs:
   generate-readme:
@@ -35,7 +35,7 @@ jobs:
         list-files: shell
         filters: |
           addedOrModified:
-            - added|modified: 'charts/**'
+            - added|modified: 'charts/*'
     - name: Install Helm
       if: steps.filter.outputs.addedOrModified == 'true'
       uses: azure/setup-helm@v1
@@ -83,7 +83,7 @@ jobs:
         commit_user_name: jr0dd
         commit_user_email: jr0dd@users.noreply.github.com
         commit_author: j_r0dd <jr0dd@users.noreply.github.com>
-        file_pattern: charts/**/
+        file_pattern: charts/*/
 
   release:
     runs-on: ubuntu-20.04

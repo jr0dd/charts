@@ -22,8 +22,8 @@ readme_changelog_template="${repository}/hack/templates/README_CHANGELOG.md.gotm
 charts=$(find "${repository}" -name "Chart.yaml")
 
 # Allow for a specific chart to be passed in as a argument
-if [ $# -ge 1 ] && [ -n "$1" ]; then
-    charts="${repository}/charts/$1/Chart.yaml"
+if [ $# -ge 1 ] && [ -n "$1" ] && [ -n "$2" ]; then
+    charts="${repository}/charts/$1/$2/Chart.yaml"
     root="$(dirname "${charts}")"
     if [ ! -f "$charts" ]; then
         echo "File ${charts} does not exist."
