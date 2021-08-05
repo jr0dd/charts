@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-set -e
-
 # require yq
 command -v yq >/dev/null 2>&1 || {
     echo >&2 "yq (https://github.com/mikefarah/yq) is not installed. Aborting."
