@@ -41,7 +41,6 @@ probes:
       timeoutSeconds: 1
       periodSeconds: 5
       failureThreshold: 5
-  
   readiness:
      enabled: true
      custom: true
@@ -52,9 +51,8 @@ probes:
        timeoutSeconds: 1
        periodSeconds: 5
        failureThreshold: 3
-
-   startup:
-     enabled: false
+  startup:
+    enabled: false
 
 # Use the following site to easily generate configs
 # https://www.wireguardconfig.com
