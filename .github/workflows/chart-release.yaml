@@ -171,3 +171,5 @@ jobs:
         token: ${{ steps.get-app-token.outputs.token }}
         charts_url: https://jr0dd.github.io/charts/
         repository: https://github.com/jr0dd/charts
+      env:
+        GIT_DISCOVERY_ACROSS_FILESYSTEM: "1"
