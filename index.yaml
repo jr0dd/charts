@@ -3,7 +3,7 @@ entries:
   discord-stock-ticker:
   - apiVersion: v2
     appVersion: 3.3.0
-    created: "2021-08-05T01:50:10.184168313-04:00"
+    created: "2021-08-05T10:23:05.820958448-04:00"
     dependencies:
     - name: common
       repository: https://library-charts.k8s-at-home.com
@@ -27,7 +27,7 @@ entries:
     version: 10.1.0
   - apiVersion: v2
     appVersion: 3.3.0
-    created: "2021-08-05T01:50:10.179286179-04:00"
+    created: "2021-08-05T10:23:05.817014235-04:00"
     dependencies:
     - name: common
       repository: https://library-charts.k8s-at-home.com
@@ -51,7 +51,7 @@ entries:
     version: 10.0.2
   - apiVersion: v2
     appVersion: 3.2.0
-    created: "2021-08-05T01:50:10.176478982-04:00"
+    created: "2021-08-05T10:23:05.814535296-04:00"
     dependencies:
     - name: common
       repository: https://library-charts.k8s-at-home.com
@@ -75,7 +75,7 @@ entries:
     version: 10.0.1
   - apiVersion: v2
     appVersion: 3.2.0
-    created: "2021-08-05T01:50:10.173888092-04:00"
+    created: "2021-08-05T10:23:05.812038552-04:00"
     dependencies:
     - name: common
       repository: https://library-charts.k8s-at-home.com
@@ -100,7 +100,7 @@ entries:
   mkvtoolnix:
   - apiVersion: v2
     appVersion: 58.0.0
-    created: "2021-08-05T01:50:10.191466015-04:00"
+    created: "2021-08-05T10:23:05.825538493-04:00"
     dependencies:
     - name: common
       repository: https://library-charts.k8s-at-home.com
@@ -121,7 +121,7 @@ entries:
     version: 3.4.1
   - apiVersion: v2
     appVersion: 58.0.0
-    created: "2021-08-05T01:50:10.188503983-04:00"
+    created: "2021-08-05T10:23:05.8232791-04:00"
     dependencies:
     - name: common
       repository: https://library-charts.k8s-at-home.com
@@ -143,7 +143,30 @@ entries:
   wireguard:
   - apiVersion: v2
     appVersion: 1.0.20210424
-    created: "2021-08-05T01:50:10.197710492-04:00"
+    created: "2021-08-05T10:23:05.833623421-04:00"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 3.3.0
+    description: a simple wireguard container
+    digest: 0b38e5687a13d172152d28bd61b3eb82bd377cd5c3d8527462f782d7109bb35f
+    icon: https://symbols.getvecta.com/stencil_101/70_wireguard-icon.5e959a20f0.jpg
+    keywords:
+    - vpn
+    - privacy
+    - security
+    - wireguard
+    kubeVersion: '>=1.16.0-0'
+    name: wireguard
+    sources:
+    - https://github.com/k8s-at-home/container-images/tree/main/apps/wireguard
+    - https://www.wireguard.com/repositories/
+    urls:
+    - wireguard-8.5.1.tgz
+    version: 8.5.1
+  - apiVersion: v2
+    appVersion: 1.0.20210424
+    created: "2021-08-05T10:23:05.830365443-04:00"
     dependencies:
     - name: common
       repository: https://library-charts.k8s-at-home.com
@@ -166,7 +189,7 @@ entries:
     version: 8.5.0
   - apiVersion: v2
     appVersion: 1.0.20210424
-    created: "2021-08-05T01:50:10.19399054-04:00"
+    created: "2021-08-05T10:23:05.827954604-04:00"
     dependencies:
     - name: common
       repository: https://library-charts.k8s-at-home.com
@@ -187,4 +210,4 @@ entries:
     urls:
     - wireguard-8.4.0.tgz
     version: 8.4.0
-generated: "2021-08-05T01:50:10.170268256-04:00"
+generated: "2021-08-05T10:23:05.809428333-04:00"
