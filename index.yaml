@@ -1,5 +1,48 @@
 apiVersion: v1
 entries:
+  cloudflare-ddns:
+  - apiVersion: v2
+    appVersion: 3.1.0
+    created: "2021-08-05T23:41:04.447836403Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 3.3.0
+    description: cloudflare ddns updater
+    digest: 95a26c38983036e65c63ff99578cda6db9559e55f7f5f44d2e42d09ad7324988
+    icon: https://www.pinclipart.com/picdir/middle/9-95127_the-free-version-of-cloudflare-content-delivery-network.png
+    keywords:
+    - dns
+    - cloudflare
+    - security
+    kubeVersion: '>=1.16.0-0'
+    name: cloudflare-ddns
+    sources:
+    - https://github.com/jr0dd/container-images https://github.com/jr0dd/charts
+    urls:
+    - https://github.com/jr0dd/charts/releases/download/cloudflare-ddns-5.3.0/cloudflare-ddns-5.3.0.tgz
+    version: 5.3.0
+  codeserver:
+  - apiVersion: v2
+    appVersion: 3.10.0
+    created: "2021-08-05T23:41:04.587176275Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 3.3.0
+    description: VS Code in the browser
+    digest: 515bc93024617604d153f23d961af27607fa648f8f22d08621603a0d4c96cf38
+    icon: https://github.com/cdr/code-server/blob/main/src/browser/media/pwa-icon.png
+    keywords:
+    - coding
+    - dev
+    kubeVersion: '>=1.16.0-0'
+    name: codeserver
+    sources:
+    - https://github.com/cdr/code-server
+    urls:
+    - https://github.com/jr0dd/charts/releases/download/codeserver-5.3.0/codeserver-5.3.0.tgz
+    version: 5.3.0
   discord-stock-ticker:
   - apiVersion: v2
     appVersion: 3.3.0
@@ -140,7 +183,52 @@ entries:
     urls:
     - mkvtoolnix-3.4.0.tgz
     version: 3.4.0
+  pihole:
+  - apiVersion: v2
+    appVersion: 5.8.1
+    created: "2021-08-05T23:41:04.977428096Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 3.3.0
+    description: A black hole for Internet advertisements
+    digest: 35edb1e5f492de9a1db42647700246568d4cb4741231cd9833f07f7b637ecae5
+    icon: https://pi-hole.github.io/graphics/Vortex/Vortex_with_Wordmark.svg
+    keywords:
+    - dns
+    - pihole
+    - security
+    kubeVersion: '>=1.16.0-0'
+    name: pihole
+    sources:
+    - https://github.com/pi-hole/docker-pi-hole
+    urls:
+    - https://github.com/jr0dd/charts/releases/download/pihole-3.3.0/pihole-3.3.0.tgz
+    version: 3.3.0
   wireguard:
+  - apiVersion: v2
+    appVersion: 1.0.20210424
+    created: "2021-08-05T23:41:05.132739579Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 3.3.0
+    description: a simple wireguard container
+    digest: 098c3746f8cb8200a3b95bc9b21a7eb99e867265de3ff8d82c43c5e294d1b6cb
+    icon: https://symbols.getvecta.com/stencil_101/70_wireguard-icon.5e959a20f0.jpg
+    keywords:
+    - vpn
+    - privacy
+    - security
+    - wireguard
+    kubeVersion: '>=1.16.0-0'
+    name: wireguard
+    sources:
+    - https://github.com/k8s-at-home/container-images/tree/main/apps/wireguard
+    - https://www.wireguard.com/repositories/
+    urls:
+    - https://github.com/jr0dd/charts/releases/download/wireguard-8.5.4/wireguard-8.5.4.tgz
+    version: 8.5.4
   - apiVersion: v2
     appVersion: 1.0.20210424
     created: "2021-08-05T11:44:03.768700149-04:00"
@@ -233,4 +321,4 @@ entries:
     urls:
     - wireguard-8.4.0.tgz
     version: 8.4.0
-generated: "2021-08-05T11:44:03.737945588-04:00"
+generated: "2021-08-05T23:41:05.13276798Z"
