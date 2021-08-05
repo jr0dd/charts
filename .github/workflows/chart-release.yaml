@@ -1,8 +1,9 @@
-name: Release Charts
+name: "Charts: Release"
 
 concurrency: helm-release
 
 on:
+  workflow_dispatch:
   push:
     branches:
     - main
@@ -10,13 +11,21 @@ on:
     - 'charts/**'
 
 jobs:
-  release:
+  generate-readme:
+    name: Auto-generate chart README
     runs-on: ubuntu-20.04
     steps:
+    - name: Get jr0dd token
+      id: get-app-token
+      uses: getsentry/action-github-app-token@v1
+      with:
+        app_id: ${{ secrets.APP_ID }}
+        private_key: ${{ secrets.APP_PRIVATE_KEY }}
+
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ steps.get-app-token.outputs.token }}
         ref: main
 
     - uses: dorny/paths-filter@v2
@@ -71,7 +80,82 @@ jobs:
       with:
         push_options: --force
         commit_message: Auto-generate chart README [no ci]
-        commit_user_name: j_r0dd
+        commit_user_name: jr0dd
         commit_user_email: jr0dd@users.noreply.github.com
         commit_author: j_r0dd <jr0dd@users.noreply.github.com>
         file_pattern: charts/**/
+
+  release:
+    runs-on: ubuntu-20.04
+    needs:
+    - generate-readme
+    steps:
+    - name: Get chart token
+      id: get-app-token
+      uses: getsentry/action-github-app-token@v1
+      with:
+        app_id: ${{ secrets.APP_ID }}
+        private_key: ${{ secrets.APP_PRIVATE_KEY }}
+
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        token: ${{ steps.get-app-token.outputs.token }}
+        ref: main
+        fetch-depth: 0
+
+    - name: Configure Git
+      run: |
+        git config user.name "jr0dd"
+        git config user.email "jr0dd@users.noreply.github.com"
+    - name: Install Helm
+      uses: azure/setup-helm@v1
+      with:
+        version: v3.6.3
+
+    - name: Run chart-releaser
+      uses: helm/chart-releaser-action@v1.2.1
+      with:
+        charts_dir: charts/*
+        charts_repo_url: https://jr0dd.github.io/charts/
+      env:
+        CR_TOKEN: "${{ steps.get-app-token.outputs.token }}"
+        CR_SKIP_EXISTING: "true"
+
+  generate-summary:
+    name: Auto-generate charts summary
+    runs-on: ubuntu-20.04
+    needs:
+    - release
+    steps:
+    - name: Get charts token
+      id: get-app-token
+      uses: getsentry/action-github-app-token@v1
+      with:
+        app_id: ${{ secrets.APP_ID }}
+        private_key: ${{ secrets.APP_PRIVATE_KEY }}
+
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        token: ${{ steps.get-app-token.outputs.token }}
+        ref: main
+        fetch-depth: 0
+
+    - name: Install yq
+      uses: chrisdickinson/setup-yq@latest
+      with:
+        yq-version: v4.9.3
+
+    - name: Run script
+      run: |
+        ./hack/gen-chart-summary.sh
+    - name: Create Commit
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        push_options: --force
+        commit_message: Auto-generate chart summary [no ci]
+        commit_user_name: jr0dd
+        commit_user_email: jr0dd@users.noreply.github.com
+        commit_author: j_r0dd <jr0dd@users.noreply.github.com>
+        file_pattern: charts/README.md
