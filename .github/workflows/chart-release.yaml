@@ -175,5 +175,3 @@ jobs:
       uses: J12934/helm-gh-pages-action@master
       with:
         access-token: ${{ steps.get-app-token.outputs.token }}
-        deploy-branch: gh-pages
-        charts-folder: charts
