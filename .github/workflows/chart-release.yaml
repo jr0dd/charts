@@ -169,3 +169,6 @@ jobs:
       uses: stefanprodan/helm-gh-pages@v1.4.1
       with:
         token: ${{ steps.get-app-token.outputs.token }}
+        charts_dir: charts
+        owner: jr0dd
+        repository: charts
