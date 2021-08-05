@@ -165,6 +165,13 @@ jobs:
     needs:
     - generate-summary
     steps:
+    - name: Get chart token
+      id: get-app-token
+      uses: getsentry/action-github-app-token@v1
+      with:
+        app_id: ${{ secrets.APP_ID }}
+        private_key: ${{ secrets.APP_PRIVATE_KEY }}
+    - name: Publish Chart
       - uses: actions/checkout@v1
       - uses: J12934/helm-gh-pages-action@master
         with:
