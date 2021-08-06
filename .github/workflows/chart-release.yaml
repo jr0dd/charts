@@ -15,17 +15,10 @@ jobs:
     name: Auto-generate chart README
     runs-on: ubuntu-20.04
     steps:
-    - name: Get chart token
-      id: get-app-token
-      uses: getsentry/action-github-app-token@v1
-      with:
-        app_id: ${{ secrets.APP_ID }}
-        private_key: ${{ secrets.APP_PRIVATE_KEY }}
-
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        token: ${{ steps.get-app-token.outputs.token }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         ref: main
 
     - uses: dorny/paths-filter@v2
@@ -83,9 +76,9 @@ jobs:
       with:
         push_options: --force
         commit_message: Auto-generate chart README [no ci]
-        commit_user_name: k8s-pusher[bot]
-        commit_user_email: k8s-pusher[bot@users.noreply.github.com
-        commit_author: k8s-pusher[bot] <k8s-pusher[bot]@users.noreply.github.com>
+        commit_user_name: jr0dd
+        commit_user_email: jr0dd@users.noreply.github.com
+        commit_author: j_r0dd <jr0dd@users.noreply.github.com>
         file_pattern: charts/**/
 
   release:
@@ -93,24 +86,17 @@ jobs:
     needs:
     - generate-readme
     steps:
-    - name: Get chart token
-      id: get-app-token
-      uses: getsentry/action-github-app-token@v1
-      with:
-        app_id: ${{ secrets.APP_ID }}
-        private_key: ${{ secrets.APP_PRIVATE_KEY }}
-
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        token: ${{ steps.get-app-token.outputs.token }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         ref: main
         fetch-depth: 0
 
     - name: Configure Git
       run: |
-        git config user.name "k8s-pusher[bot]"
-        git config user.email "k8s-pusher[bot]@users.noreply.github.com"
+        git config user.name "jr0dd"
+        git config user.email "jr0dd@users.noreply.github.com"
 
     - name: Install Helm
       uses: azure/setup-helm@v1
@@ -120,7 +106,7 @@ jobs:
     - name: Run chart-releaser
       uses: helm/chart-releaser-action@v1.2.1
       env:
-        CR_TOKEN: "${{ steps.get-app-token.outputs.token }}"
+        CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
   generate-summary:
     name: Auto-generate charts summary
@@ -128,17 +114,10 @@ jobs:
     needs:
     - release
     steps:
-    - name: Get chart token
-      id: get-app-token
-      uses: getsentry/action-github-app-token@v1
-      with:
-        app_id: ${{ secrets.APP_ID }}
-        private_key: ${{ secrets.APP_PRIVATE_KEY }}
-
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        token: ${{ steps.get-app-token.outputs.token }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         ref: main
         fetch-depth: 0
 
@@ -156,7 +135,7 @@ jobs:
       with:
         push_options: --force
         commit_message: Auto-generate chart summary [no ci]
-        commit_user_name: k8s-pusher[bot]
-        commit_user_email: k8s-pusher[bot]@users.noreply.github.com
-        commit_author: k8s-pusher[bot] <k8sbot@users.noreply.github.com>
+        commit_user_name: jr0dd
+        commit_user_email: jr0dd@users.noreply.github.com
+        commit_author: j_r0dd <jr0dd@users.noreply.github.com>
         file_pattern: charts/README.md
