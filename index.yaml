@@ -208,6 +208,29 @@ entries:
   wireguard:
   - apiVersion: v2
     appVersion: 1.0.20210424
+    created: "2021-08-06T04:11:43.18554248Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 3.3.0
+    description: a simple wireguard container
+    digest: 6492a48a71b76233b4fe070c8940abdd49a6091136ed753fd4bb672bdd02fc68
+    icon: https://symbols.getvecta.com/stencil_101/70_wireguard-icon.5e959a20f0.jpg
+    keywords:
+    - vpn
+    - privacy
+    - security
+    - wireguard
+    kubeVersion: '>=1.16.0-0'
+    name: wireguard
+    sources:
+    - https://github.com/k8s-at-home/container-images/tree/main/apps/wireguard
+    - https://www.wireguard.com/repositories/
+    urls:
+    - https://github.com/jr0dd/charts/releases/download/wireguard-8.5.5/wireguard-8.5.5.tgz
+    version: 8.5.5
+  - apiVersion: v2
+    appVersion: 1.0.20210424
     created: "2021-08-05T23:41:05.132739579Z"
     dependencies:
     - name: common
@@ -321,4 +344,4 @@ entries:
     urls:
     - wireguard-8.4.0.tgz
     version: 8.4.0
-generated: "2021-08-05T23:41:05.13276798Z"
+generated: "2021-08-06T04:11:43.18566328Z"
