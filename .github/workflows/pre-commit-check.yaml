@@ -24,7 +24,7 @@ jobs:
         list-files: shell
         filters: |
           addedOrModified:
-            - added|modified: '*'
+            - added|modified: '**'
     # run only if changed files were detected
     - name: Run against changes
       uses: pre-commit/action@v2.0.3
