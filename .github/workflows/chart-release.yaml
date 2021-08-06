@@ -5,7 +5,7 @@ concurrency: helm-release
 on:
   workflow_dispatch:
   push:
-    branches: 
+    branches:
     - main
     paths:
     - 'charts/**'
