@@ -83,9 +83,9 @@ jobs:
       with:
         push_options: --force
         commit_message: Auto-generate chart README [no ci]
-        commit_user_name: k8sbot
-        commit_user_email: k8sbot@users.noreply.github.com
-        commit_author: k8sbot <k8sbot@users.noreply.github.com>
+        commit_user_name: k8s-pusher[bot]
+        commit_user_email: k8s-pusher[bot@users.noreply.github.com
+        commit_author: k8s-pusher[bot] <k8s-pusher[bot]@users.noreply.github.com>
         file_pattern: charts/**/
 
   release:
@@ -109,8 +109,8 @@ jobs:
 
     - name: Configure Git
       run: |
-        git config user.name "k8sbot"
-        git config user.email "k8sbot@users.noreply.github.com"
+        git config user.name "k8s-pusher[bot]"
+        git config user.email "k8s-pusher[bot]@users.noreply.github.com"
 
     - name: Install Helm
       uses: azure/setup-helm@v1
@@ -156,7 +156,7 @@ jobs:
       with:
         push_options: --force
         commit_message: Auto-generate chart summary [no ci]
-        commit_user_name: botk8s
-        commit_user_email: botk8s@users.noreply.github.com
-        commit_author: botk8s <k8sbot@users.noreply.github.com>
+        commit_user_name: k8s-pusher[bot]
+        commit_user_email: k8s-pusher[bot]@users.noreply.github.com
+        commit_author: k8s-pusher[bot] <k8sbot@users.noreply.github.com>
         file_pattern: charts/README.md
