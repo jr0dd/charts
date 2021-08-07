@@ -24,6 +24,26 @@ entries:
     version: 5.3.0
   codeserver:
   - apiVersion: v2
+    appVersion: 3.11.1
+    created: "2021-08-07T02:34:05.465695165Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 3.3.0
+    description: VS Code in the browser
+    digest: 33c6b53e35f8b1f521b8ad480a32c41d6735e415f16537526dbbb19799cf709a
+    icon: https://github.com/cdr/code-server/blob/main/src/browser/media/pwa-icon.png
+    keywords:
+    - coding
+    - dev
+    kubeVersion: '>=1.16.0-0'
+    name: codeserver
+    sources:
+    - https://github.com/cdr/code-server
+    urls:
+    - https://github.com/jr0dd/charts/releases/download/codeserver-5.4.0/codeserver-5.4.0.tgz
+    version: 5.4.0
+  - apiVersion: v2
     appVersion: 3.10.0
     created: "2021-08-05T23:41:04.587176275Z"
     dependencies:
@@ -143,6 +163,27 @@ entries:
   mkvtoolnix:
   - apiVersion: v2
     appVersion: 58.0.0
+    created: "2021-08-07T02:34:05.602783333Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 3.3.0
+    description: Docker container for MKVToolNix
+    digest: 027815cbf236c8fb10b324db2b5077aa47bf9af9ed94d082769499e796323900
+    icon: https://images.weserv.nl/?url=raw.githubusercontent.com/jlesage/docker-templates/master/jlesage/images/mkvtoolnix-icon.png
+    keywords:
+    - video editing
+    - mkv
+    kubeVersion: '>=1.16.0-0'
+    name: mkvtoolnix
+    sources:
+    - https://github.com/jlesage/docker-mkvtoolnix
+    - https://mkvtoolnix.download/source.html
+    urls:
+    - https://github.com/jr0dd/charts/releases/download/mkvtoolnix-3.4.2/mkvtoolnix-3.4.2.tgz
+    version: 3.4.2
+  - apiVersion: v2
+    appVersion: 58.0.0
     created: "2021-08-05T11:44:03.754265666-04:00"
     dependencies:
     - name: common
@@ -184,6 +225,27 @@ entries:
     - mkvtoolnix-3.4.0.tgz
     version: 3.4.0
   pihole:
+  - apiVersion: v2
+    appVersion: 5.8.1
+    created: "2021-08-07T02:34:05.75034118Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 3.3.0
+    description: A black hole for Internet advertisements
+    digest: 7c33ca4ec9b4a3735fb3f477298d5d2168619ea2c09e1ab0ee9771fb4d2f1419
+    icon: https://pi-hole.github.io/graphics/Vortex/Vortex_with_Wordmark.svg
+    keywords:
+    - dns
+    - pihole
+    - security
+    kubeVersion: '>=1.16.0-0'
+    name: pihole
+    sources:
+    - https://github.com/pi-hole/docker-pi-hole
+    urls:
+    - https://github.com/jr0dd/charts/releases/download/pihole-3.3.1/pihole-3.3.1.tgz
+    version: 3.3.1
   - apiVersion: v2
     appVersion: 5.8.1
     created: "2021-08-05T23:41:04.977428096Z"
@@ -344,4 +406,4 @@ entries:
     urls:
     - wireguard-8.4.0.tgz
     version: 8.4.0
-generated: "2021-08-06T04:11:43.18566328Z"
+generated: "2021-08-07T02:34:05.750462086Z"
