@@ -21,9 +21,8 @@ jobs:
     name: Label commenter
     runs-on: ubuntu-20.04
     steps:
-    - name: Get app token
+    - uses: getsentry/action-github-app-token@v1
       id: get-app-token
-      uses: getsentry/action-github-app-token@v1
       with:
         app_id: ${{ secrets.APP_ID }}
         private_key: ${{ secrets.APP_PRIVATE_KEY }}
