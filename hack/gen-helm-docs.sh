@@ -2,7 +2,7 @@
 set -eu
 
 # Generate helm-docs for Helm charts
-# Usage ./gen-helm-docs.sh [chart]
+# Usage ./gen-helm-docs.sh [stable/incubator] [chart]
 
 # require helm-docs
 command -v helm-docs >/dev/null 2>&1 || {
@@ -30,7 +30,7 @@ if [ $# -ge 1 ] && [ -n "$1" ] && [ -n "$2" ]; then
         exit 1
     fi
 else
-    root="${repository}/charts"
+    root="${repository}/charts/stable"
 fi
 
 for chart in ${charts}; do

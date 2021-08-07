@@ -36,6 +36,7 @@ jobs:
       run: |
         sudo wget https://github.com/mikefarah/yq/releases/download/v4.2.0/yq_linux_amd64 -O /usr/bin/yq
         sudo chmod +x /usr/bin/yq
+
     - name: Run chart-testing (list-changed)
       id: list-changed
       run: |
@@ -47,6 +48,7 @@ jobs:
         if [[ $(echo ${OUTPUT_JSON} | jq -c '. | length') -gt 0 ]]; then
           echo "::set-output name=detected::true"
         fi
+
   changes-install:
     name: Detect changes for install
     runs-on: ubuntu-20.04
@@ -69,6 +71,7 @@ jobs:
       run: |
         sudo wget https://github.com/mikefarah/yq/releases/download/v4.2.0/yq_linux_amd64 -O /usr/bin/yq
         sudo chmod +x /usr/bin/yq
+
     - name: Run chart-testing (list-changed)
       id: list-changed
       run: |
@@ -80,6 +83,7 @@ jobs:
         if [[ $(echo ${OUTPUT_JSON} | jq -c '. | length') -gt 0 ]]; then
           echo "::set-output name=detected::true"
         fi
+
   lint:
     needs:
     - changes-lint
@@ -138,9 +142,11 @@ jobs:
         RUBYJQ_USE_SYSTEM_LIBRARIES: 1
       run: |
         bundle install
+
     - name: Run tests
       run: |
         bundle exec m -r ./test/
+
   install:
     needs:
     - changes-install
@@ -179,6 +185,7 @@ jobs:
     - name: Remove node taints
       run: |
         kubectl taint --all=true nodes node.cloudprovider.kubernetes.io/uninitialized- || true
+
     - name: Run chart-testing (install)
       run: ct install --config .github/ct-install.yaml --charts ${{ matrix.chart }}
 

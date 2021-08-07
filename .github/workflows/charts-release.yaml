@@ -65,8 +65,10 @@ jobs:
             IFS='/' read -r -a path_parts <<< "$i"
             CHARTS+=("${path_parts[1]}/${path_parts[2]}")
         done
+
         # Remove duplicates
         CHARTS=( `for i in ${CHARTS[@]}; do echo $i; done | sort -u` )
+
         for i in "${CHARTS[@]}"
         do
             echo "Rendering README for chart ${i}"
@@ -115,13 +117,16 @@ jobs:
     - name: Install Helm
       uses: azure/setup-helm@v1
       with:
-        version: v3.4.0
+        version: v3.6.3
 
     - name: Run chart-releaser
       uses: helm/chart-releaser-action@v1.2.1
+      with:
+        charts_dir: charts/*
+        charts_repo_url: https://jr0dd.github.io/charts/
       env:
-        CR_TOKEN: ${{ steps.get-app-token.outputs.token }}
-        CR_SKIP_EXISTING: "false"
+        CR_TOKEN: "${{ steps.get-app-token.outputs.token }}"
+        CR_SKIP_EXISTING: "true"
 
   generate-summary:
     name: Auto-generate charts summary
@@ -150,7 +155,7 @@ jobs:
 
     - name: Run script
       run: |
-        sudo bash hack/gen-chart-summary.sh
+        ./hack/gen-chart-summary.sh
 
     - name: Create Commit
       uses: stefanzweifel/git-auto-commit-action@v4
