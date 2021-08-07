@@ -15,11 +15,7 @@ jobs:
     name: Auto-generate chart README
     runs-on: ubuntu-20.04
     steps:
-<<<<<<< HEAD:.github/workflows/charts-release.yaml
     - name: Get app token
-=======
-    - name: Get chart token
->>>>>>> parent of 08f7033 (remove bot):.github/workflows/chart-release.yaml
       id: get-app-token
       uses: getsentry/action-github-app-token@v1
       with:
@@ -91,11 +87,7 @@ jobs:
         push_options: --force
         commit_message: Auto-generate chart README [no ci]
         commit_user_name: k8s-pusher[bot]
-<<<<<<< HEAD:.github/workflows/charts-release.yaml
         commit_user_email: k8s-pusher[bot]@users.noreply.github.com
-=======
-        commit_user_email: k8s-pusher[bot@users.noreply.github.com
->>>>>>> parent of 08f7033 (remove bot):.github/workflows/chart-release.yaml
         commit_author: k8s-pusher[bot] <k8s-pusher[bot]@users.noreply.github.com>
         file_pattern: charts/**/
 
@@ -104,11 +96,7 @@ jobs:
     needs:
     - generate-readme
     steps:
-<<<<<<< HEAD:.github/workflows/charts-release.yaml
     - name: Get app token
-=======
-    - name: Get chart token
->>>>>>> parent of 08f7033 (remove bot):.github/workflows/chart-release.yaml
       id: get-app-token
       uses: getsentry/action-github-app-token@v1
       with:
@@ -139,10 +127,7 @@ jobs:
         charts_repo_url: https://jr0dd.github.io/charts/
       env:
         CR_TOKEN: "${{ steps.get-app-token.outputs.token }}"
-<<<<<<< HEAD:.github/workflows/charts-release.yaml
         CR_SKIP_EXISTING: "true"
-=======
->>>>>>> parent of 08f7033 (remove bot):.github/workflows/chart-release.yaml
 
   generate-summary:
     name: Auto-generate charts summary
@@ -150,11 +135,7 @@ jobs:
     needs:
     - release
     steps:
-<<<<<<< HEAD:.github/workflows/charts-release.yaml
     - name: Get app token
-=======
-    - name: Get chart token
->>>>>>> parent of 08f7033 (remove bot):.github/workflows/chart-release.yaml
       id: get-app-token
       uses: getsentry/action-github-app-token@v1
       with:
@@ -184,9 +165,5 @@ jobs:
         commit_message: Auto-generate chart summary [no ci]
         commit_user_name: k8s-pusher[bot]
         commit_user_email: k8s-pusher[bot]@users.noreply.github.com
-<<<<<<< HEAD:.github/workflows/charts-release.yaml
         commit_author: k8s-pusher[bot] <k8s-pusher[bot]@users.noreply.github.com>
-=======
-        commit_author: k8s-pusher[bot] <k8sbot@users.noreply.github.com>
->>>>>>> parent of 08f7033 (remove bot):.github/workflows/chart-release.yaml
         file_pattern: charts/README.md
