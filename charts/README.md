@@ -1,5 +1,7 @@
 # Helm charts overview
-### Charts:
+
+## Charts
+
 | Chart | Description |
 | ----- | ----------- |
 | [cloudflare-ddns] | cloudflare ddns updater |

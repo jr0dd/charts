@@ -3,11 +3,11 @@ name: "Charts: Lint and test"
 on:
   pull_request:
     paths:
-    - 'charts/*'
-    - '!charts/*/README.md'
-    - '!charts/*/README.md.gotmpl'
-    - '!charts/*/README_CHANGELOG.md.gotmpl'
-    - '!charts/*/README_CONFIG.md.gotmpl'
+    - 'charts/**'
+    - '!charts/**/README.md'
+    - '!charts/**/README.md.gotmpl'
+    - '!charts/**/README_CHANGELOG.md.gotmpl'
+    - '!charts/**/README_CONFIG.md.gotmpl'
 
 concurrency:
   group: ${{ github.head_ref }}-lint

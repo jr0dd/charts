@@ -1,3 +1,4 @@
-Chart for a standalone Wireguard server
+# README
 
-Use sudo for `wg` commands
+Chart of a standalone Wireguard server
+from k8s@home Wireguard image.
