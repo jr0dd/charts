@@ -20,11 +20,8 @@ env:
   
 service:
   main:
-    enabled: true
-    type: ClusterIP
     ports:
       http:
-        enabled: true
         port: 8080
         protocol: HTTP
 
