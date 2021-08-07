@@ -74,6 +74,7 @@ jobs:
             echo "Rendering README for chart ${i}"
             IFS='/' read -r -a chart_parts <<< "$i"
             if [ -f "charts/${chart_parts[0]}"/"${chart_parts[1]}/Chart.yaml" ]; then
+              chmod +x hack/gen-helm-docs.sh
               ./hack/gen-helm-docs.sh "${chart_parts[0]}" "${chart_parts[1]}"
             fi
             echo ""
