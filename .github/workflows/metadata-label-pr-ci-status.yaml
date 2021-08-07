@@ -15,18 +15,25 @@ jobs:
     runs-on: ubuntu-20.04
     if: "${{ github.event.workflow.name == 'Pre-commit consistency check' }}"
     steps:
+    - name: Get app token
+      id: get-app-token
+      uses: getsentry/action-github-app-token@v1
+      with:
+        app_id: ${{ secrets.APP_ID }}
+        private_key: ${{ secrets.APP_PRIVATE_KEY }}
+
     - name: "Get information about the origin 'CI' run"
       uses: potiuk/get-workflow-origin@v1
       id: source-run-info
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ steps.get-app-token.outputs.token }}
         sourceRunId: ${{ github.event.workflow_run.id }}
 
     - name: Label precommit success
       uses: andymckay/labeler@1.0.3
       if: ${{ github.event.workflow_run.conclusion == 'success' }}
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        repo-token: ${{ steps.get-app-token.outputs.token }}
         issue-number: ${{ steps.source-run-info.outputs.pullRequestNumber }}
         add-labels: "precommit:ok"
         remove-labels: "precommit:failed"
@@ -35,7 +42,7 @@ jobs:
       uses: andymckay/labeler@1.0.3
       if: ${{ github.event.workflow_run.conclusion == 'failure' }}
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        repo-token: ${{ steps.get-app-token.outputs.token }}
         issue-number: ${{ steps.source-run-info.outputs.pullRequestNumber }}
         add-labels: "precommit:failed"
         remove-labels: "precommit:ok"
@@ -45,18 +52,25 @@ jobs:
     runs-on: ubuntu-20.04
     if: "${{ github.event.workflow.name == 'Charts: Lint and test' }}"
     steps:
+    - name: Get app token
+      id: get-app-token
+      uses: getsentry/action-github-app-token@v1
+      with:
+        app_id: ${{ secrets.APP_ID }}
+        private_key: ${{ secrets.APP_PRIVATE_KEY }}
+        
     - name: "Get information about the origin 'CI' run"
       uses: potiuk/get-workflow-origin@v1
       id: source-run-info
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ steps.get-app-token.outputs.token }}
         sourceRunId: ${{ github.event.workflow_run.id }}
 
     - name: "Get workflow job status"
       uses: actions/github-script@v4
       id: get-workflow-jobs
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        github-token: ${{ steps.get-app-token.outputs.token }}
         script: |
           let result = new Object
           const wfJobs = await github.actions.listJobsForWorkflowRun({
@@ -77,7 +91,7 @@ jobs:
       uses: andymckay/labeler@1.0.3
       if: ${{ fromJSON(steps.get-workflow-jobs.outputs.result).lint == 'success' }}
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        repo-token: ${{ steps.get-app-token.outputs.token }}
         issue-number: ${{ steps.source-run-info.outputs.pullRequestNumber }}
         add-labels: "lint:ok"
         remove-labels: "lint:failed"
@@ -86,7 +100,7 @@ jobs:
       uses: andymckay/labeler@1.0.3
       if: ${{ fromJSON(steps.get-workflow-jobs.outputs.result).lint == 'failure' }}
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        repo-token: ${{ steps.get-app-token.outputs.token }}
         issue-number: ${{ steps.source-run-info.outputs.pullRequestNumber }}
         add-labels: "lint:failed"
         remove-labels: "lint:ok"
@@ -95,7 +109,7 @@ jobs:
       uses: andymckay/labeler@1.0.3
       if: ${{ fromJSON(steps.get-workflow-jobs.outputs.result).install == 'success' }}
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        repo-token: ${{ steps.get-app-token.outputs.token }}
         issue-number: ${{ steps.source-run-info.outputs.pullRequestNumber }}
         add-labels: "install:ok"
         remove-labels: "install:failed"
@@ -104,7 +118,7 @@ jobs:
       uses: andymckay/labeler@1.0.3
       if: ${{ fromJSON(steps.get-workflow-jobs.outputs.result).install == 'failure' }}
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        repo-token: ${{ steps.get-app-token.outputs.token }}
         issue-number: ${{ steps.source-run-info.outputs.pullRequestNumber }}
         add-labels: "install:failed"
         remove-labels: "install:ok"
