@@ -2,7 +2,9 @@
 set -eu
 
 # Generate helm-docs for Helm charts
-                                                                                                                                                                                                                            
+
+# Usage ./gen-helm-docs.sh [chart]
+
 # require helm-docs
 command -v helm-docs >/dev/null 2>&1 || {
     echo >&2 "helm-docs (https://github.com/norwoodj/helm-docs) is not installed. Aborting."
@@ -47,7 +49,7 @@ done
 # Run helm-docs for charts using the common library and the common library itself
 helm-docs \
     --ignore-file="${repository}/.helmdocsignore" \
-    --template-files="${readme}" \
-    --template-files="${readme_config}" \
-    --template-files="${readme_changelog}" \
+    --template-files="$(basename "${readme}")" \
+    --template-files="$(basename "${readme_config}")" \
+    --template-files="$(basename "${readme_changelog}")" \
     --chart-search-root="${root}"
