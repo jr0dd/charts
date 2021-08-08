@@ -1,6 +1,6 @@
 # Helm charts overview
 
-## Charts:
+## Charts
 
 | Chart | Description |
 | ----- | ----------- |

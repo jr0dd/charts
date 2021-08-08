@@ -17,7 +17,7 @@ stable_charts=$(find "${charts_folder}" -name "Chart.yaml" | sort)
 
 echo $'# Helm charts overview\n' > "${charts_summary_file}"
 
-echo $'## Charts:\n' >> "${charts_summary_file}"
+echo $'## Charts\n' >> "${charts_summary_file}"
 echo "| Chart | Description |" >> "${charts_summary_file}"
 echo "| ----- | ----------- |" >> "${charts_summary_file}"
 for i in ${stable_charts[@]}
