@@ -8,5 +8,5 @@
 | [code-server](code-server) | VS Code in the browser |
 | [discord-stock-ticker](discord-stock-ticker) | discord stock ticker bot |
 | [mkvtoolnix](mkvtoolnix) | Docker container for MKVToolNix |
-| [pihole](pihole) | A black hole for Internet advertisements |
+| [pi-hole](pi-hole) | A black hole for Internet advertisements |
 | [wireguard](wireguard) | a simple wireguard container |
