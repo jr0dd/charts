@@ -1,6 +1,6 @@
 # wireguard
 
-![Version: 8.5.9](https://img.shields.io/badge/Version-8.5.9-informational?style=flat-square) ![AppVersion: 1.0.20210424](https://img.shields.io/badge/AppVersion-1.0.20210424-informational?style=flat-square)
+![Version: 8.6.0](https://img.shields.io/badge/Version-8.6.0-informational?style=flat-square) ![AppVersion: 1.0.20210424](https://img.shields.io/badge/AppVersion-1.0.20210424-informational?style=flat-square)
 
 a simple wireguard container
 

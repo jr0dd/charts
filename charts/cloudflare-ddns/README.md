@@ -1,6 +1,6 @@
 # cloudflare-ddns
 
-![Version: 5.3.7](https://img.shields.io/badge/Version-5.3.7-informational?style=flat-square) ![AppVersion: 3.1.0](https://img.shields.io/badge/AppVersion-3.1.0-informational?style=flat-square)
+![Version: 5.3.8](https://img.shields.io/badge/Version-5.3.8-informational?style=flat-square) ![AppVersion: 3.1.0](https://img.shields.io/badge/AppVersion-3.1.0-informational?style=flat-square)
 
 cloudflare ddns updater
 

@@ -1,6 +1,6 @@
 # pi-hole
 
-![Version: 3.3.5](https://img.shields.io/badge/Version-3.3.5-informational?style=flat-square) ![AppVersion: 5.8.1](https://img.shields.io/badge/AppVersion-5.8.1-informational?style=flat-square)
+![Version: 3.3.6](https://img.shields.io/badge/Version-3.3.6-informational?style=flat-square) ![AppVersion: 5.8.1](https://img.shields.io/badge/AppVersion-5.8.1-informational?style=flat-square)
 
 A black hole for Internet advertisements
 

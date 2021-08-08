@@ -1,6 +1,6 @@
 # code-server
 
-![Version: 5.4.6](https://img.shields.io/badge/Version-5.4.6-informational?style=flat-square) ![AppVersion: 3.11.1](https://img.shields.io/badge/AppVersion-3.11.1-informational?style=flat-square)
+![Version: 5.4.7](https://img.shields.io/badge/Version-5.4.7-informational?style=flat-square) ![AppVersion: 3.11.1](https://img.shields.io/badge/AppVersion-3.11.1-informational?style=flat-square)
 
 VS Code in the browser
 
