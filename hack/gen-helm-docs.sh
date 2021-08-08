@@ -30,7 +30,7 @@ if [ $# -ge 1 ] && [ -n "$1" ] && [ -n "$2" ]; then
         exit 1
     fi
 else
-    root="${repository}/charts/stable"
+    root="${repository}/charts"
 fi
 
 for chart in ${charts}; do

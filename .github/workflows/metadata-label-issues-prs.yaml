@@ -22,15 +22,15 @@ jobs:
     name: Label issues and pull requests
     runs-on: ubuntu-20.04
     steps:
-    - uses: getsentry/action-github-app-token@v1
-      id: get-app-token
-      with:
-        app_id: ${{ secrets.APP_ID }}
-        private_key: ${{ secrets.APP_PRIVATE_KEY }}
+    # - uses: getsentry/action-github-app-token@v1
+    #   id: get-app-token
+    #   with:
+    #     app_id: ${{ secrets.APP_ID }}
+    #     private_key: ${{ secrets.APP_PRIVATE_KEY }}
 
     - uses: Videndum/label-mastermind@2.1.3
       with:
-        GITHUB_TOKEN: ${{ steps.get-app-token.outputs.token }}
+        GITHUB_TOKEN: ${{ GITHUB_TOKEN }}
         configJSON: |
           {
             "releaseMastermind": {

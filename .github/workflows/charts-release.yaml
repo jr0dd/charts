@@ -15,17 +15,17 @@ jobs:
     name: Auto-generate chart README
     runs-on: ubuntu-20.04
     steps:
-    - name: Get app token
-      id: get-app-token
-      uses: getsentry/action-github-app-token@v1
-      with:
-        app_id: ${{ secrets.APP_ID }}
-        private_key: ${{ secrets.APP_PRIVATE_KEY }}
+    # - name: Get app token
+    #   id: get-app-token
+    #   uses: getsentry/action-github-app-token@v1
+    #   with:
+    #     app_id: ${{ secrets.APP_ID }}
+    #     private_key: ${{ secrets.APP_PRIVATE_KEY }}
 
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        token: ${{ steps.get-app-token.outputs.token }}
+        token: ${{ github.token }}
         ref: main
 
     - uses: dorny/paths-filter@v2
@@ -96,17 +96,17 @@ jobs:
     needs:
     - generate-readme
     steps:
-    - name: Get app token
-      id: get-app-token
-      uses: getsentry/action-github-app-token@v1
-      with:
-        app_id: ${{ secrets.APP_ID }}
-        private_key: ${{ secrets.APP_PRIVATE_KEY }}
+    # - name: Get app token
+    #   id: get-app-token
+    #   uses: getsentry/action-github-app-token@v1
+    #   with:
+    #     app_id: ${{ secrets.APP_ID }}
+    #     private_key: ${{ secrets.APP_PRIVATE_KEY }}
 
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        token: ${{ steps.get-app-token.outputs.token }}
+        token: ${{ github.token }}
         ref: main
         fetch-depth: 0
 
@@ -126,7 +126,7 @@ jobs:
         charts_dir: charts/*
         charts_repo_url: https://jr0dd.github.io/charts/
       env:
-        CR_TOKEN: "${{ steps.get-app-token.outputs.token }}"
+        CR_TOKEN: "${{ github.token }}"
         CR_SKIP_EXISTING: "true"
 
   generate-summary:
@@ -135,17 +135,17 @@ jobs:
     needs:
     - release
     steps:
-    - name: Get app token
-      id: get-app-token
-      uses: getsentry/action-github-app-token@v1
-      with:
-        app_id: ${{ secrets.APP_ID }}
-        private_key: ${{ secrets.APP_PRIVATE_KEY }}
+    # - name: Get app token
+    #   id: get-app-token
+    #   uses: getsentry/action-github-app-token@v1
+    #   with:
+    #     app_id: ${{ secrets.APP_ID }}
+    #     private_key: ${{ secrets.APP_PRIVATE_KEY }}
 
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        token: ${{ steps.get-app-token.outputs.token }}
+        token: ${{ github.token }}
         ref: main
         fetch-depth: 0
 
