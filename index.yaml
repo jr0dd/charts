@@ -3,6 +3,28 @@ entries:
   cloudflare-ddns:
   - apiVersion: v2
     appVersion: 3.1.0
+    created: "2021-08-08T18:29:09.735958179Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 3.3.0
+    description: cloudflare ddns updater
+    digest: e2dcb1b523e2fef4e332d1e1a171e290da69ef8a280ba95a10a5a5fe7a377a23
+    icon: https://www.pinclipart.com/picdir/middle/9-95127_the-free-version-of-cloudflare-content-delivery-network.png
+    keywords:
+    - dns
+    - cloudflare
+    - security
+    kubeVersion: '>=1.16.0-0'
+    name: cloudflare-ddns
+    sources:
+    - https://github.com/jr0dd/container-images
+    - https://github.com/jr0dd/charts
+    urls:
+    - https://github.com/jr0dd/charts/releases/download/cloudflare-ddns-5.3.5/cloudflare-ddns-5.3.5.tgz
+    version: 5.3.5
+  - apiVersion: v2
+    appVersion: 3.1.0
     created: "2021-08-08T17:47:01.694212276Z"
     dependencies:
     - name: common
@@ -293,4 +315,4 @@ entries:
     urls:
     - https://github.com/jr0dd/charts/releases/download/wireguard-8.5.7/wireguard-8.5.7.tgz
     version: 8.5.7
-generated: "2021-08-08T17:47:02.644054613Z"
+generated: "2021-08-08T18:29:09.736007082Z"
