@@ -20,7 +20,18 @@ readme_changelog="${templates}/README_CHANGELOG.md.gotmpl"
 
 # Gather all charts using the common library, excluding common-test
 charts=$(find "${repository}" -name "Chart.yaml")
-root="${repository}/charts"
+
+# Allow for a specific chart to be passed in as a argument
+if [ $# -ge 1 ] && [ -n "$1" ]; then
+    charts="${repository}/charts/$1/Chart.yaml"
+    root="$(dirname "${charts}")"
+    if [ ! -f "$charts" ]; then
+        echo "File ${charts} does not exist."
+        exit 1
+    fi
+else
+    root="${repository}/charts"
+fi
 
 for chart in ${charts}; do
     chart_dir="$(dirname "${chart}")"
