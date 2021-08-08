@@ -3,6 +3,28 @@ entries:
   cloudflare-ddns:
   - apiVersion: v2
     appVersion: 3.1.0
+    created: "2021-08-08T17:47:01.694212276Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 3.3.0
+    description: cloudflare ddns updater
+    digest: 9fc7fcddc8bf217fe698ac269d5eb271b0af195af7746e3b5e4c1bf57fe28294
+    icon: https://www.pinclipart.com/picdir/middle/9-95127_the-free-version-of-cloudflare-content-delivery-network.png
+    keywords:
+    - dns
+    - cloudflare
+    - security
+    kubeVersion: '>=1.16.0-0'
+    name: cloudflare-ddns
+    sources:
+    - https://github.com/jr0dd/container-images
+    - https://github.com/jr0dd/charts
+    urls:
+    - https://github.com/jr0dd/charts/releases/download/cloudflare-ddns-5.3.4/cloudflare-ddns-5.3.4.tgz
+    version: 5.3.4
+  - apiVersion: v2
+    appVersion: 3.1.0
     created: "2021-08-08T03:03:31.118928047Z"
     dependencies:
     - name: common
@@ -23,6 +45,28 @@ entries:
     - https://github.com/jr0dd/charts/releases/download/cloudflare-ddns-5.3.2/cloudflare-ddns-5.3.2.tgz
     version: 5.3.2
   code-server:
+  - apiVersion: v2
+    appVersion: 3.11.1
+    created: "2021-08-08T17:47:01.997558416Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 3.3.0
+    description: VS Code in the browser
+    digest: 9b9f2b3db1194dd56e9bb95678df7275fee735b833051d50c4034b5fa153777c
+    icon: https://github.com/cdr/code-server/blob/main/src/browser/media/pwa-icon.png
+    keywords:
+    - coding
+    - dev
+    - vscode
+    kubeVersion: '>=1.16.0-0'
+    name: code-server
+    sources:
+    - https://github.com/cdr/code-server
+    - https://github.com/jr0dd/charts
+    urls:
+    - https://github.com/jr0dd/charts/releases/download/code-server-5.4.4/code-server-5.4.4.tgz
+    version: 5.4.4
   - apiVersion: v2
     appVersion: 3.11.1
     created: "2021-08-08T03:32:38.3633458Z"
@@ -66,6 +110,30 @@ entries:
   discord-stock-ticker:
   - apiVersion: v2
     appVersion: 3.3.0
+    created: "2021-08-08T17:47:02.125214141Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 3.3.0
+    description: discord stock ticker bot
+    digest: 9bd2464112b0323773837df36a07de7cd98c4c91b6fce54675f16e5ec8ce60e7
+    icon: https://yt3.ggpht.com/a/AATXAJyg-fbSlEWGUgmsY_0DBQKQThY_Shh_yHGGAQ=s900-c-k-c0xffffffff-no-rj-mo
+    keywords:
+    - bot
+    - stocks
+    - crypto
+    - discord
+    kubeVersion: '>=1.16.0-0'
+    name: discord-stock-ticker
+    sources:
+    - https://github.com/rssnyder/discord-stock-ticker
+    - https://github.com/jr0dd/charts
+    - https://github.com/jr0dd/container-images
+    urls:
+    - https://github.com/jr0dd/charts/releases/download/discord-stock-ticker-10.1.4/discord-stock-ticker-10.1.4.tgz
+    version: 10.1.4
+  - apiVersion: v2
+    appVersion: 3.3.0
     created: "2021-08-08T03:03:31.375190591Z"
     dependencies:
     - name: common
@@ -91,6 +159,28 @@ entries:
   mkvtoolnix:
   - apiVersion: v2
     appVersion: 58.0.0
+    created: "2021-08-08T17:47:02.28439521Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 3.3.0
+    description: Docker container for MKVToolNix
+    digest: 73f64235e2f1a4c17c0d33ce042b97852e5aed4a393b63d724480b902a78450f
+    icon: https://images.weserv.nl/?url=raw.githubusercontent.com/jlesage/docker-templates/master/jlesage/images/mkvtoolnix-icon.png
+    keywords:
+    - video editing
+    - mkv
+    kubeVersion: '>=1.16.0-0'
+    name: mkvtoolnix
+    sources:
+    - https://github.com/jlesage/docker-mkvtoolnix
+    - https://mkvtoolnix.download/source.html
+    - https://github.com/jr0dd/charts
+    urls:
+    - https://github.com/jr0dd/charts/releases/download/mkvtoolnix-3.4.6/mkvtoolnix-3.4.6.tgz
+    version: 3.4.6
+  - apiVersion: v2
+    appVersion: 58.0.0
     created: "2021-08-08T03:03:31.502480602Z"
     dependencies:
     - name: common
@@ -110,6 +200,30 @@ entries:
     urls:
     - https://github.com/jr0dd/charts/releases/download/mkvtoolnix-3.4.4/mkvtoolnix-3.4.4.tgz
     version: 3.4.4
+  pi-hole:
+  - apiVersion: v2
+    appVersion: 5.8.1
+    created: "2021-08-08T17:47:02.470755978Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 3.3.0
+    description: A black hole for Internet advertisements
+    digest: c0b017d712dcb16b5b6c0894bce6a793bbbf74f1c3a274c443d7a86b42715aea
+    icon: https://pi-hole.github.io/graphics/Vortex/Vortex_with_Wordmark.svg
+    keywords:
+    - dns
+    - pi-hole
+    - security
+    - ad-blocking
+    kubeVersion: '>=1.16.0-0'
+    name: pi-hole
+    sources:
+    - https://github.com/pi-hole/docker-pi-hole
+    - https://github.com/jr0dd/charts
+    urls:
+    - https://github.com/jr0dd/charts/releases/download/pi-hole-3.3.5/pi-hole-3.3.5.tgz
+    version: 3.3.5
   pihole:
   - apiVersion: v2
     appVersion: 5.8.1
@@ -135,6 +249,29 @@ entries:
   wireguard:
   - apiVersion: v2
     appVersion: 1.0.20210424
+    created: "2021-08-08T17:47:02.644018012Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 3.3.0
+    description: a simple wireguard container
+    digest: 7252b626c3632c53e6772bd70ec5b8399526bfdbb096c3b0aa20658d7d1e7bc8
+    icon: https://avatars.githubusercontent.com/u/13991055?s=200&v=4
+    keywords:
+    - vpn
+    - privacy
+    - security
+    - wireguard
+    kubeVersion: '>=1.16.0-0'
+    name: wireguard
+    sources:
+    - https://github.com/k8s-at-home/container-images
+    - https://github.com/jr0dd/charts
+    urls:
+    - https://github.com/jr0dd/charts/releases/download/wireguard-8.5.9/wireguard-8.5.9.tgz
+    version: 8.5.9
+  - apiVersion: v2
+    appVersion: 1.0.20210424
     created: "2021-08-08T03:03:31.752233863Z"
     dependencies:
     - name: common
@@ -156,4 +293,4 @@ entries:
     urls:
     - https://github.com/jr0dd/charts/releases/download/wireguard-8.5.7/wireguard-8.5.7.tgz
     version: 8.5.7
-generated: "2021-08-08T03:32:38.363473302Z"
+generated: "2021-08-08T17:47:02.644054613Z"
