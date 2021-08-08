@@ -15,9 +15,9 @@ charts_summary_file="${charts_folder}"/README.md
 # Gather all charts using the common library, excluding common-test
 stable_charts=$(find "${charts_folder}" -name "Chart.yaml" | sort)
 
-echo "# Helm charts overview" > "${charts_summary_file}"
+echo $'# Helm charts overview\n' > "${charts_summary_file}"
 
-echo "## Charts:" >> "${charts_summary_file}"
+echo $'## Charts:\n' >> "${charts_summary_file}"
 echo "| Chart | Description |" >> "${charts_summary_file}"
 echo "| ----- | ----------- |" >> "${charts_summary_file}"
 for i in ${stable_charts[@]}
