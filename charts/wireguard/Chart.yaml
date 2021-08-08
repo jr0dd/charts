@@ -10,9 +10,9 @@ keywords:
 - security
 - wireguard
 sources:
-- https://github.com/k8s-at-home/container-images/tree/main/apps/wireguard
-- https://www.wireguard.com/repositories/
-icon: https://symbols.getvecta.com/stencil_101/70_wireguard-icon.5e959a20f0.jpg
+- https://github.com/k8s-at-home/container-images
+- https://github.com/jr0dd/charts
+icon: https://avatars.githubusercontent.com/u/13991055?s=200&v=4
 dependencies:
 - name: common
   version: 3.3.0

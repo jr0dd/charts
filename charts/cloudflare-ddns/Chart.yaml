@@ -10,7 +10,7 @@ keywords:
 - security
 sources:
 - https://github.com/jr0dd/container-images
-  https://github.com/jr0dd/charts
+- https://github.com/jr0dd/charts
 icon: https://www.pinclipart.com/picdir/middle/9-95127_the-free-version-of-cloudflare-content-delivery-network.png
 dependencies:
 - name: common

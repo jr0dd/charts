@@ -10,6 +10,7 @@ keywords:
 sources:
 - https://github.com/jlesage/docker-mkvtoolnix
 - https://mkvtoolnix.download/source.html
+- https://github.com/jr0dd/charts
 icon: https://images.weserv.nl/?url=raw.githubusercontent.com/jlesage/docker-templates/master/jlesage/images/mkvtoolnix-icon.png
 dependencies:
 - name: common

@@ -7,8 +7,10 @@ kubeVersion: ">=1.16.0-0"
 keywords:
 - coding
 - dev
+- vscode
 sources:
 - https://github.com/cdr/code-server
+- https://github.com/jr0dd/charts
 icon: https://github.com/cdr/code-server/blob/main/src/browser/media/pwa-icon.png
 dependencies:
 - name: common

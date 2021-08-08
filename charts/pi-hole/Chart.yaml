@@ -8,8 +8,10 @@ keywords:
 - dns
 - pi-hole
 - security
+- ad-blocking
 sources:
 - https://github.com/pi-hole/docker-pi-hole
+- https://github.com/jr0dd/charts
 icon: https://pi-hole.github.io/graphics/Vortex/Vortex_with_Wordmark.svg
 dependencies:
 - name: common
