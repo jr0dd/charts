@@ -57,7 +57,25 @@ jobs:
     - name: Run against changed charts
       if: steps.filter.outputs.addedOrModified == 'true'
       run: |
-        ./hack/gen-helm-docs.sh
+        CHARTS=()
+        PATHS=(${{ steps.filter.outputs.addedOrModified_files }})
+        # Get only the chart paths
+        for i in "${PATHS[@]}"
+        do
+            IFS='/' read -r -a path_parts <<< "$i"
+            CHARTS+=("${path_parts}")
+        done
+        # Remove duplicates
+        CHARTS=( `for i in ${CHARTS[@]}; do echo $i; done | sort -u` )
+        for i in "${CHARTS[@]}"
+        do
+            echo "Rendering README for chart ${i}"
+            IFS='/' read -r -a chart_parts <<< "$i"
+            if [ -f "charts/${chart_parts}/Chart.yaml" ]; then
+              ./hack/gen-helm-docs.sh "${chart_parts}"
+            fi
+            echo ""
+        done
 
     - name: Create commit
       if: steps.filter.outputs.addedOrModified == 'true'
