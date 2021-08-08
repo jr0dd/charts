@@ -69,6 +69,28 @@ entries:
   code-server:
   - apiVersion: v2
     appVersion: 3.11.1
+    created: "2021-08-08T19:08:50.464065902Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 3.3.0
+    description: VS Code in the browser
+    digest: a9c11ed76c79d6a10b5f0a8223c8f8fa10fe129c3c061dfe2733713e0546defc
+    icon: https://github.com/cdr/code-server/blob/main/src/browser/media/pwa-icon.png
+    keywords:
+    - coding
+    - dev
+    - vscode
+    kubeVersion: '>=1.16.0-0'
+    name: code-server
+    sources:
+    - https://github.com/cdr/code-server
+    - https://github.com/jr0dd/charts
+    urls:
+    - https://github.com/jr0dd/charts/releases/download/code-server-5.4.6/code-server-5.4.6.tgz
+    version: 5.4.6
+  - apiVersion: v2
+    appVersion: 3.11.1
     created: "2021-08-08T19:06:22.563106094Z"
     dependencies:
     - name: common
@@ -337,4 +359,4 @@ entries:
     urls:
     - https://github.com/jr0dd/charts/releases/download/wireguard-8.5.7/wireguard-8.5.7.tgz
     version: 8.5.7
-generated: "2021-08-08T19:06:22.563557099Z"
+generated: "2021-08-08T19:08:50.464116702Z"
