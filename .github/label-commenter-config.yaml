@@ -9,6 +9,14 @@ labels:
         locking: lock
         lock_reason: resolved
 
+  - name: kind:support
+    labeled:
+      issue:
+        body: |
+          :wave: @{{ issue.user.login }}, we use the issue tracker exclusively
+          for bug reports and feature requests. 
+        action: close
+
   - name: kind:incomplete-docs
     labeled:
       pr:
@@ -19,7 +27,7 @@ labels:
           - `version` in `Chart.yaml` has been updated per [semver](http://semver.org/)
           - `README_CHANGELOG.md.gotmpl` contains a summary of the updates for this new version
           - [Documentation strings](https://github.com/norwoodj/helm-docs#valuesyaml-metadata) have been added to the keys in `values.yaml`.
-          Afterwards you can run `./hack/gen-helm-docs.sh stable <chart>` again to update the chart's `README.md` file.
+          Afterwards you can run `./hack/gen-helm-docs.sh <chart>` again to update the chart's `README.md` file.
   - name: kind:incorrect-title
     labeled:
       pr:
