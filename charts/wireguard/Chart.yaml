@@ -2,7 +2,7 @@ apiVersion: v2
 appVersion: "1.0.20210424"
 description: a simple wireguard container
 name: wireguard
-version: 8.5.9
+version: 8.6.0
 kubeVersion: ">=1.16.0-0"
 keywords:
 - vpn
