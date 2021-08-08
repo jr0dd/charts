@@ -1,6 +1,6 @@
 # mkvtoolnix
 
-![Version: 3.4.7](https://img.shields.io/badge/Version-3.4.7-informational?style=flat-square) ![AppVersion: 58.0.0](https://img.shields.io/badge/AppVersion-58.0.0-informational?style=flat-square)
+![Version: 3.5.0](https://img.shields.io/badge/Version-3.5.0-informational?style=flat-square) ![AppVersion: 59.0.0](https://img.shields.io/badge/AppVersion-59.0.0-informational?style=flat-square)
 
 Docker container for MKVToolNix
 
