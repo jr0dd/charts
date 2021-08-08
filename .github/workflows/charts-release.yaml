@@ -126,7 +126,7 @@ jobs:
         charts_repo_url: https://jr0dd.github.io/charts/
       env:
         CR_TOKEN: "${{ steps.get-app-token.outputs.token }}"
-        CR_SKIP_EXISTING: "true"
+        CR_SKIP_EXISTING: "false"
 
   generate-summary:
     name: Auto-generate charts summary
