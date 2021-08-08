@@ -1,12 +1,12 @@
 apiVersion: v2
 appVersion: "5.8.1"
 description: A black hole for Internet advertisements
-name: pihole
-version: 3.3.3
+name: pi-hole
+version: 3.3.4
 kubeVersion: ">=1.16.0-0"
 keywords:
 - dns
-- pihole
+- pi-hole
 - security
 sources:
 - https://github.com/pi-hole/docker-pi-hole

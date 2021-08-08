@@ -1,4 +1,4 @@
-# README
+# cloudflare-ddns
 
 This is a chart to use for Cloudflare DDNS.
 All that is needed from you is your Zone API token

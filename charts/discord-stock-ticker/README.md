@@ -1,4 +1,4 @@
-# README
+# discord-stock-ticker
 
 This chart is for @rssnyder's discord-stock-ticker. I had to make a custom
 image to get the configmap working to inject bots into the api with persistence.

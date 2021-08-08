@@ -1,3 +1,3 @@
-# README
+# code-server
 
-Codeserver chart
+Code-server chart
