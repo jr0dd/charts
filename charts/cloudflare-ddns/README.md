@@ -1,6 +1,6 @@
 # cloudflare-ddns
 
-![Version: 5.3.4](https://img.shields.io/badge/Version-5.3.4-informational?style=flat-square) ![AppVersion: 3.1.0](https://img.shields.io/badge/AppVersion-3.1.0-informational?style=flat-square)
+![Version: 5.3.5](https://img.shields.io/badge/Version-5.3.5-informational?style=flat-square) ![AppVersion: 3.1.0](https://img.shields.io/badge/AppVersion-3.1.0-informational?style=flat-square)
 
 cloudflare ddns updater
 
@@ -101,7 +101,7 @@ N/A
 | probes.readiness.enabled | bool | `true` |  |
 | probes.readiness.spec.exec.command[0] | string | `"bash"` |  |
 | probes.readiness.spec.exec.command[1] | string | `"-c"` |  |
-| probes.readiness.spec.exec.command[2] | string | `"if crontab -l \| grep -q 'ddns'; then exit 0; fi"` |  |
+| probes.readiness.spec.exec.command[2] | string | `"if crontab -l | grep -q 'ddns'; then exit 0; fi"` |  |
 | probes.readiness.spec.failureThreshold | int | `3` |  |
 | probes.readiness.spec.initialDelaySeconds | int | `0` |  |
 | probes.readiness.spec.periodSeconds | int | `5` |  |
@@ -110,7 +110,7 @@ N/A
 | probes.startup.enabled | bool | `true` |  |
 | probes.startup.spec.exec.command[0] | string | `"bash"` |  |
 | probes.startup.spec.exec.command[1] | string | `"-c"` |  |
-| probes.startup.spec.exec.command[2] | string | `"if crontab -l \| grep -q 'API'; then exit 0; fi"` |  |
+| probes.startup.spec.exec.command[2] | string | `"if crontab -l | grep -q 'API'; then exit 0; fi"` |  |
 | probes.startup.spec.failureThreshold | int | `3` |  |
 | probes.startup.spec.initialDelaySeconds | int | `5` |  |
 | probes.startup.spec.periodSeconds | int | `10` |  |
