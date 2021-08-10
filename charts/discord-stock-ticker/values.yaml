@@ -14,7 +14,7 @@ controller:
   strategy: RollingUpdate
 
 env:
-  TZ: "UTC"
+  TZ: "America/New_York"
 
 service:
   main:
