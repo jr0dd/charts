@@ -82,7 +82,7 @@ N/A
 | controller.enabled | bool | `true` |  |
 | controller.replicas | int | `1` |  |
 | controller.strategy | string | `"RollingUpdate"` |  |
-| env.TZ | string | `"UTC"` |  |
+| env.TZ | string | `"America/New_York"` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"ghcr.io/jr0dd/discord-stock-ticker"` |  |
 | image.tag | string | `"v3.3.0"` |  |
