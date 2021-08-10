@@ -2,7 +2,7 @@ apiVersion: v2
 appVersion: "3.3.0"
 description: discord stock ticker bot
 name: discord-stock-ticker
-version: 10.1.5
+version: 11.0.0
 kubeVersion: ">=1.16.0-0"
 keywords:
 - bot
@@ -16,5 +16,5 @@ sources:
 icon: https://yt3.ggpht.com/a/AATXAJyg-fbSlEWGUgmsY_0DBQKQThY_Shh_yHGGAQ=s900-c-k-c0xffffffff-no-rj-mo
 dependencies:
 - name: common
-  version: 3.3.0
+  version: 4.0.0
   repository: https://library-charts.k8s-at-home.com
