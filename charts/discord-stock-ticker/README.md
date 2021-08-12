@@ -1,6 +1,6 @@
 # discord-stock-ticker
 
-![Version: 10.1.5](https://img.shields.io/badge/Version-10.1.5-informational?style=flat-square) ![AppVersion: 3.3.0](https://img.shields.io/badge/AppVersion-3.3.0-informational?style=flat-square)
+![Version: 11.0.0](https://img.shields.io/badge/Version-11.0.0-informational?style=flat-square) ![AppVersion: 3.3.0](https://img.shields.io/badge/AppVersion-3.3.0-informational?style=flat-square)
 
 discord stock ticker bot
 
@@ -20,7 +20,7 @@ Kubernetes: `>=1.16.0-0`
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://library-charts.k8s-at-home.com | common | 3.3.0 |
+| https://library-charts.k8s-at-home.com | common | 4.0.0 |
 
 ## TL;DR
 
@@ -82,7 +82,7 @@ N/A
 | controller.enabled | bool | `true` |  |
 | controller.replicas | int | `1` |  |
 | controller.strategy | string | `"RollingUpdate"` |  |
-| env.TZ | string | `"UTC"` |  |
+| env.TZ | string | `"America/New_York"` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"ghcr.io/jr0dd/discord-stock-ticker"` |  |
 | image.tag | string | `"v3.3.0"` |  |
