@@ -1,6 +1,6 @@
 # discord-stock-ticker
 
-![Version: 11.0.0](https://img.shields.io/badge/Version-11.0.0-informational?style=flat-square) ![AppVersion: 3.3.0](https://img.shields.io/badge/AppVersion-3.3.0-informational?style=flat-square)
+![Version: 11.0.1](https://img.shields.io/badge/Version-11.0.1-informational?style=flat-square) ![AppVersion: 3.3.1](https://img.shields.io/badge/AppVersion-3.3.1-informational?style=flat-square)
 
 discord stock ticker bot
 
@@ -85,7 +85,7 @@ N/A
 | env.TZ | string | `"America/New_York"` |  |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
 | image.repository | string | `"ghcr.io/jr0dd/discord-stock-ticker"` |  |
-| image.tag | string | `"v3.3.0"` |  |
+| image.tag | string | `"v3.3.1"` |  |
 | lifecycle.postStart.exec.command[0] | string | `"bash"` |  |
 | lifecycle.postStart.exec.command[1] | string | `"/app/config.sh"` |  |
 | probes.liveness.custom | bool | `true` |  |
