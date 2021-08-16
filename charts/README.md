@@ -10,4 +10,4 @@
 | [minio-operator](minio-operator) | A Helm chart for MinIO Operator |
 | [mkvtoolnix](mkvtoolnix) | Docker container for MKVToolNix |
 | [pi-hole](pi-hole) | A black hole for Internet advertisements |
-| [wireguard](wireguard) | a simple wireguard container |
+| [wireguard](wireguard) | Fast, modern, secure VPN tunnel |
