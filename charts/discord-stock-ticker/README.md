@@ -1,6 +1,6 @@
 # discord-stock-ticker
 
-![Version: 11.0.1](https://img.shields.io/badge/Version-11.0.1-informational?style=flat-square) ![AppVersion: 3.3.1](https://img.shields.io/badge/AppVersion-3.3.1-informational?style=flat-square)
+![Version: 12.0.0](https://img.shields.io/badge/Version-12.0.0-informational?style=flat-square) ![AppVersion: 3.3.1](https://img.shields.io/badge/AppVersion-3.3.1-informational?style=flat-square)
 
 discord stock ticker bot
 
@@ -77,38 +77,30 @@ N/A
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| configmap.config | string | `"#!/usr/bin/env bash\nset -eu\n\nFREQ=\"10\"\nNICK=\"true\"\nCOLOR=\"true\"\nACTIVITY=\"\"\n\ncurl -X POST \\\n\"localhost:8080/ticker\" \\\n-H \"Content-Type: application/json\" \\\n-d \"{\\\"ticker\\\":\\\"BTC\\\", \\\n  \\\"name\\\":\\\"bitcoin\\\", \\\n  \\\"discord_bot_token\\\":\\\"${BTC}\\\", \\\n  \\\"crypto\\\":true, \\\n  \\\"frequency\\\":${FREQ}, \\\n  \\\"set_nickname\\\":${NICK}, \\\n  \\\"set_color\\\":${COLOR}, \\\n  \\\"bitcoin\\\":false, \\\n  \\\"activity\\\":\\\"${ACTIVITY}\\\"}\"\n\ncurl -X POST \\\n\"localhost:8080/ticker\" \\\n-H \"Content-Type: application/json\" \\\n-d \"{\\\"ticker\\\":\\\"GME\\\", \\\n  \\\"name\\\":\\\"GME\\\", \\\n  \\\"discord_bot_token\\\":\\\"${GME}\\\", \\\n  \\\"frequency\\\":${FREQ}, \\\n  \\\"set_nickname\\\":${NICK}, \\\n  \\\"set_color\\\":${COLOR}, \\\n  \\\"activity\\\":\\\"${ACTIVITY}\\\"}\"\n"` |  |
-| configmap.enabled | bool | `false` |  |
-| controller.enabled | bool | `true` |  |
-| controller.replicas | int | `1` |  |
-| controller.strategy | string | `"RollingUpdate"` |  |
-| env.TZ | string | `"America/New_York"` |  |
-| image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"ghcr.io/jr0dd/discord-stock-ticker"` |  |
-| image.tag | string | `"v3.3.1"` |  |
-| lifecycle.postStart.exec.command[0] | string | `"bash"` |  |
-| lifecycle.postStart.exec.command[1] | string | `"/app/config.sh"` |  |
-| probes.liveness.custom | bool | `true` |  |
-| probes.liveness.enabled | bool | `true` |  |
-| probes.liveness.spec.exec.command[0] | string | `"bash"` |  |
-| probes.liveness.spec.exec.command[1] | string | `"-c"` |  |
-| probes.liveness.spec.exec.command[2] | string | `"if [[ $(curl -s https://discord.com) ]]; then exit 0; else exit $?; fi"` |  |
-| probes.liveness.spec.failureThreshold | int | `5` |  |
-| probes.liveness.spec.initialDelaySeconds | int | `0` |  |
-| probes.liveness.spec.periodSeconds | int | `5` |  |
-| probes.liveness.spec.timeoutSeconds | int | `1` |  |
-| prometheus.prometheusRule.additionalLabels | object | `{}` |  |
-| prometheus.prometheusRule.enabled | bool | `false` |  |
-| prometheus.serviceMonitor.additionalLabels | object | `{}` |  |
-| prometheus.serviceMonitor.enabled | bool | `false` |  |
-| prometheus.serviceMonitor.interval | string | `"10s"` |  |
-| service.main.ports.http.port | int | `8080` |  |
+| configmap | object | See values.yaml | Store payload script as a configmap -- Otherwise you can use env vars or curl to deliver the payload |
+| configmap.enabled | bool | `false` | If set to 'true', the configuration will be read from these values. |
+| env.TZ | string | `"UTC"` | Set the container timezone |
+| image.pullPolicy | string | `"IfNotPresent"` | image pull policy |
+| image.repository | string | `"ghcr.io/jr0dd/discord-stock-ticker"` | image repository |
+| image.tag | string | `"v3.3.1"` | image repository |
+| ingress.main | object | See values.yaml | Enable and configure ingress settings for the chart under this key. |
+| lifecycle.postStart | object | See values.yaml | Set the container lifecycle event |
+| persistence | object | See values.yaml | Configure persistence settings for the chart under this key. |
+| probes | object | See values.yaml | Configures the probes for the main Pod. |
+| prometheus.prometheusRule | object | See values.yaml | Enable and configure a Prometheus rules for the chart under this key. |
+| prometheus.serviceMonitor | object | See values.yaml | Enable and configure a Prometheus serviceMonitor for the chart under this key. |
+| service | object | See values.yaml | Configures service settings for the chart. |
 
 ## Changelog
 
 All notable changes to this application Helm chart will be documented in this file but does not include changes from our common library. To read those click [here](https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/commonREADME.md#Changelog).
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+### [12.0.0]
+
+#### Changed
+
+- Many changes in the chart regarding configmaps, persistence and delivery of the payload
 
 ### [1.0.0]
 
@@ -124,6 +116,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - N/A
 
+[12.0.0]: #12.0.0
 [1.0.0]: #1.0.0
 
 ----------------------------------------------

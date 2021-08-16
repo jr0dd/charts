@@ -33,4 +33,4 @@ spec:
       annotations:
         description: Bot is not reporting any tickers in the api
         summary: Bot has 0 tickers
-{{- end }}
+{{- end -}}

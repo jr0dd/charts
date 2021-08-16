@@ -6,6 +6,6 @@ metadata:
   labels:
     {{- include "common.labels" . | nindent 4 }}
 data:
-  config.sh: |
+  payload.sh: |
 {{ .Values.configmap.config | indent 4 }}
-{{- end }}
+{{- end -}}

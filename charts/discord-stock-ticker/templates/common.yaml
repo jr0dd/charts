@@ -4,15 +4,17 @@
 {{/* Append the configMap volume to the volumes */}}
 {{- define "discord-stock-ticker.configVolume" -}}
 enabled: "true"
-mountPath: "/app/config.sh"
-subPath: "config.sh"
+mountPath: "/config/payload.sh"
+subPath: "payload.sh"
 type: "custom"
 volumeSpec:
   configMap:
     defaultMode: 0755
     name: {{ include "common.names.fullname" . }}-config
 {{- end -}}
+{{- if .Values.configmap.enabled -}}
 {{- $_ := set .Values.persistence "discord-stock-ticker-config" (include "discord-stock-ticker.configVolume" . | fromYaml) -}}
+{{- end -}}
 
 {{/* Render the templates */}}
 {{ include "common.all" . }}
