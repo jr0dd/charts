@@ -675,6 +675,29 @@ entries:
   wireguard:
   - apiVersion: v2
     appVersion: 1.0.20210424
+    created: "2021-08-16T13:46:31.280503993Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 4.0.0
+    description: Fast, modern, secure VPN tunnel
+    digest: aea16a27e52b771775fba98c9400fb46bbcf2d2c8f599b810b2b5441f2d3fec0
+    icon: https://avatars.githubusercontent.com/u/13991055?s=200&v=4
+    keywords:
+    - vpn
+    - privacy
+    - security
+    - wireguard
+    kubeVersion: '>=1.16.0-0'
+    name: wireguard
+    sources:
+    - https://github.com/k8s-at-home/container-images
+    - https://github.com/jr0dd/charts
+    urls:
+    - https://github.com/jr0dd/charts/releases/download/wireguard-9.0.1/wireguard-9.0.1.tgz
+    version: 9.0.1
+  - apiVersion: v2
+    appVersion: 1.0.20210424
     created: "2021-08-10T17:31:44.365997466Z"
     dependencies:
     - name: common
@@ -765,4 +788,4 @@ entries:
     urls:
     - https://github.com/jr0dd/charts/releases/download/wireguard-8.5.7/wireguard-8.5.7.tgz
     version: 8.5.7
-generated: "2021-08-13T01:32:47.364268934Z"
+generated: "2021-08-16T13:46:31.280595699Z"
