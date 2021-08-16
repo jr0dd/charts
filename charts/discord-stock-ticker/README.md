@@ -82,7 +82,7 @@ N/A
 | env.TZ | string | `"UTC"` | Set the container timezone |
 | image.pullPolicy | string | `"IfNotPresent"` | image pull policy |
 | image.repository | string | `"ghcr.io/jr0dd/discord-stock-ticker"` | image repository |
-| image.tag | string | `"v3.3.1"` | image repository |
+| image.tag | string | `"v3.3.1"` | image tag |
 | ingress.main | object | See values.yaml | Enable and configure ingress settings for the chart under this key. |
 | lifecycle.postStart | object | See values.yaml | Set the container lifecycle event |
 | persistence | object | See values.yaml | Configure persistence settings for the chart under this key. |
