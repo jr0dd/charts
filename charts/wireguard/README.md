@@ -1,8 +1,8 @@
 # wireguard
 
-![Version: 9.0.0](https://img.shields.io/badge/Version-9.0.0-informational?style=flat-square) ![AppVersion: 1.0.20210424](https://img.shields.io/badge/AppVersion-1.0.20210424-informational?style=flat-square)
+![Version: 9.0.1](https://img.shields.io/badge/Version-9.0.1-informational?style=flat-square) ![AppVersion: 1.0.20210424](https://img.shields.io/badge/AppVersion-1.0.20210424-informational?style=flat-square)
 
-a simple wireguard container
+Fast, modern, secure VPN tunnel
 
 **This chart is not maintained by the upstream project and any issues with the chart should be raised [here](https://github.com/jr0dd/charts/issues/new/choose)**
 
@@ -76,35 +76,19 @@ N/A
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| configSecret.config | string | `"# place base64 encoded wg0.conf here\n"` |  |
-| configSecret.enabled | bool | `false` |  |
-| controller.enabled | bool | `true` |  |
-| controller.replicas | int | `1` |  |
-| controller.strategy | string | `"RollingUpdate"` |  |
-| env.IPTABLES_BACKEND | string | `"nft"` |  |
-| env.KILLSWITCH | string | `"false"` |  |
-| env.TZ | string | `"America/New_York"` |  |
-| image.pullPolicy | string | `"IfNotPresent"` |  |
-| image.repository | string | `"ghcr.io/k8s-at-home/wireguard"` |  |
-| image.tag | string | `"v1.0.20210424"` |  |
-| probes.liveness.custom | bool | `true` |  |
-| probes.liveness.enabled | bool | `true` |  |
-| probes.liveness.spec.exec.command[0] | string | `"bash"` |  |
-| probes.liveness.spec.exec.command[1] | string | `"-c"` |  |
-| probes.liveness.spec.exec.command[2] | string | `"if [[ $(curl -s https://ipinfo.io) ]]; then exit 0; else exit $?; fi"` |  |
-| probes.liveness.spec.failureThreshold | int | `5` |  |
-| probes.liveness.spec.initialDelaySeconds | int | `0` |  |
-| probes.liveness.spec.periodSeconds | int | `5` |  |
-| probes.liveness.spec.timeoutSeconds | int | `1` |  |
-| probes.readiness.enabled | bool | `false` |  |
-| probes.startup.enabled | bool | `false` |  |
-| securityContext.capabilities.add[0] | string | `"NET_ADMIN"` |  |
-| securityContext.capabilities.add[1] | string | `"SYS_MODULE"` |  |
-| service.main.enabled | bool | `true` |  |
-| service.main.ports.http.enabled | bool | `false` |  |
-| service.main.ports.vpn.enabled | bool | `true` |  |
-| service.main.ports.vpn.port | int | `51820` |  |
-| service.main.ports.vpn.protocol | string | `"UDP"` |  |
+| configSecret | object | base64 encoded wg0.conf by running `base64 wg0.conf` | If set to 'true', the configuration will be read from these values. -- Otherwise you have to mount a volume to /etc/wireguard containing the wg0.conf. |
+| configSecret.enabled | bool | `false` | Store Wireguard config as a secret |
+| env.IPTABLES_BACKEND | string | `"nft"` | Override the backend used by iptables. Valid values are nft and legacy |
+| env.KILLSWITCH | bool | false | Enable a killswitch that kills all trafic when the VPN is not connected |
+| env.TZ | string | `"UTC"` | Set the container timezone |
+| image.pullPolicy | string | `"IfNotPresent"` | image pull policy |
+| image.repository | string | `"ghcr.io/k8s-at-home/wireguard"` | image repository |
+| image.tag | string | `"v1.0.20210424"` | image tag |
+| ingress.main | object | See values.yaml | Enable and configure ingress settings for the chart under this key. |
+| persistence | object | See values.yaml | Configure persistence settings for the chart under this key. |
+| probes | object | See values.yaml | Configures the probes for the main Pod. |
+| securityContext | object | see values.yaml | Security contexts required for container. |
+| service | object | See values.yaml | Configures service settings for the chart. |
 
 ## Changelog
 
