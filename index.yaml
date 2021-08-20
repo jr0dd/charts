@@ -474,6 +474,32 @@ entries:
     urls:
     - https://github.com/jr0dd/charts/releases/download/discord-stock-ticker-10.1.3/discord-stock-ticker-10.1.3.tgz
     version: 10.1.3
+  homebridge:
+  - apiVersion: v2
+    appVersion: 4.0.0
+    created: "2021-08-20T02:50:57.463698532Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 4.0.0
+    description: A lightweight NodeJS server that emulates the iOS HomeKit API
+    digest: 4756821c6a9afb1deea8446facd7279bb546522238867482b85d396343dcd453
+    home: https://github.com/k8s-at-home/charts/tree/master/charts/stable/homebridge
+    icon: https://avatars0.githubusercontent.com/u/38217527?s=400&v=4?sanitize=true
+    keywords:
+    - homebridge
+    - homekit
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: bjw-s@users.noreply.github.com
+      name: bjw-s
+    name: homebridge
+    sources:
+    - https://homebridge.io/
+    - https://github.com/oznu/docker-homebridge
+    urls:
+    - https://github.com/jr0dd/charts/releases/download/homebridge-4.2.0/homebridge-4.2.0.tgz
+    version: 4.2.0
   minio-operator:
   - apiVersion: v2
     appVersion: v4.1.3
@@ -862,4 +888,4 @@ entries:
     urls:
     - https://github.com/jr0dd/charts/releases/download/wireguard-8.5.7/wireguard-8.5.7.tgz
     version: 8.5.7
-generated: "2021-08-19T13:48:52.374237226Z"
+generated: "2021-08-20T02:50:57.46379364Z"
