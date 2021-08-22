@@ -76,6 +76,8 @@ N/A
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| configmap | object | See values.yaml | Custom startup.sh script to install additional packages in the container |
+| configmap.enabled | bool | `false` | If set to 'true', the configuration will be read from these values. |
 | env | object | See below | environment variables. See [image docs](https://github.com/oznu/docker-homebridge#parameters) for more details. |
 | env.HOMEBRIDGE_CONFIG_UI | int | `1` | Enable the Homebridge UI |
 | env.PGID | string | `"1000"` | Specify the group ID the application will run as |
