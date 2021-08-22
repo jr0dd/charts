@@ -307,6 +307,30 @@ entries:
     version: 5.4.2
   discord-stock-ticker:
   - apiVersion: v2
+    appVersion: 3.3.5
+    created: "2021-08-22T00:03:32.462904243Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 4.0.0
+    description: discord stock ticker bot
+    digest: 4375ec3836417a273f782018f698944e6b5f8382bd33e5a712f76a22a4c4ddfe
+    icon: https://yt3.ggpht.com/a/AATXAJyg-fbSlEWGUgmsY_0DBQKQThY_Shh_yHGGAQ=s900-c-k-c0xffffffff-no-rj-mo
+    keywords:
+    - bot
+    - stocks
+    - crypto
+    - discord
+    kubeVersion: '>=1.16.0-0'
+    name: discord-stock-ticker
+    sources:
+    - https://github.com/rssnyder/discord-stock-ticker
+    - https://github.com/jr0dd/charts
+    - https://github.com/jr0dd/container-images
+    urls:
+    - https://github.com/jr0dd/charts/releases/download/discord-stock-ticker-12.1.0/discord-stock-ticker-12.1.0.tgz
+    version: 12.1.0
+  - apiVersion: v2
     appVersion: 3.3.4
     created: "2021-08-19T13:48:52.249890698Z"
     dependencies:
@@ -888,4 +912,4 @@ entries:
     urls:
     - https://github.com/jr0dd/charts/releases/download/wireguard-8.5.7/wireguard-8.5.7.tgz
     version: 8.5.7
-generated: "2021-08-20T02:50:57.46379364Z"
+generated: "2021-08-22T00:03:32.463056357Z"
