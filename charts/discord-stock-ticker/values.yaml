@@ -9,7 +9,7 @@ image:
   # -- image repository
   repository: ghcr.io/jr0dd/discord-stock-ticker
   # -- image tag
-  tag: v3.3.4
+  tag: v3.3.5
   # -- image pull policy
   pullPolicy: IfNotPresent
 
@@ -18,7 +18,7 @@ lifecycle:
   # @default -- See values.yaml
   postStart:
     exec:
-      command: ["bash", "/config/payload.sh"]
+      command: ["bash", "/app/payload.sh"]
 
 # @default -- See below
 ## For additional env vars, if not using the configmap script below,
