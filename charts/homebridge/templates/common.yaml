@@ -1,2 +1,20 @@
+{{/* Make sure all variables are set properly */}}
+{{- include "common.values.setup" . }}
+
+{{/* Append the configMap volume to the volumes */}}
+{{- define "homebridge.configVolume" -}}
+enabled: "true"
+mountPath: "/homebridge/startup.sh"
+subPath: "startup.sh"
+type: "custom"
+volumeSpec:
+  configMap:
+    defaultMode: 0755
+    name: {{ include "common.names.fullname" . }}-config
+{{- end -}}
+{{- if .Values.configmap.enabled -}}
+{{- $_ := set .Values.persistence "homebridge-config" (include "homebridge.configVolume" . | fromYaml) -}}
+{{- end -}}
+
 {{/* Render the templates */}}
 {{ include "common.all" . }}
