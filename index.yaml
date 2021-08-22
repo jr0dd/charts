@@ -501,6 +501,31 @@ entries:
   homebridge:
   - apiVersion: v2
     appVersion: 4.0.0
+    created: "2021-08-22T02:17:54.083969145Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 4.0.0
+    description: A lightweight NodeJS server that emulates the iOS HomeKit API
+    digest: a17d45ecb8d68cf225b7ef7dbf9efbf70d1344352c8f932305d231d1a096af1d
+    home: https://github.com/k8s-at-home/charts/tree/master/charts/stable/homebridge
+    icon: https://avatars0.githubusercontent.com/u/38217527?s=400&v=4?sanitize=true
+    keywords:
+    - homebridge
+    - homekit
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: bjw-s@users.noreply.github.com
+      name: bjw-s
+    name: homebridge
+    sources:
+    - https://homebridge.io/
+    - https://github.com/oznu/docker-homebridge
+    urls:
+    - https://github.com/jr0dd/charts/releases/download/homebridge-4.2.1/homebridge-4.2.1.tgz
+    version: 4.2.1
+  - apiVersion: v2
+    appVersion: 4.0.0
     created: "2021-08-20T02:50:57.463698532Z"
     dependencies:
     - name: common
@@ -912,4 +937,4 @@ entries:
     urls:
     - https://github.com/jr0dd/charts/releases/download/wireguard-8.5.7/wireguard-8.5.7.tgz
     version: 8.5.7
-generated: "2021-08-22T00:03:32.463056357Z"
+generated: "2021-08-22T02:17:54.084333151Z"
