@@ -1,6 +1,6 @@
 # discord-stock-ticker
 
-![Version: 12.1.0](https://img.shields.io/badge/Version-12.1.0-informational?style=flat-square) ![AppVersion: 3.3.5](https://img.shields.io/badge/AppVersion-3.3.5-informational?style=flat-square)
+![Version: 12.2.0](https://img.shields.io/badge/Version-12.2.0-informational?style=flat-square) ![AppVersion: 3.4.1](https://img.shields.io/badge/AppVersion-3.4.1-informational?style=flat-square)
 
 discord stock ticker bot
 
@@ -82,7 +82,7 @@ N/A
 | env.TZ | string | `"UTC"` | Set the container timezone |
 | image.pullPolicy | string | `"IfNotPresent"` | image pull policy |
 | image.repository | string | `"ghcr.io/jr0dd/discord-stock-ticker"` | image repository |
-| image.tag | string | `"v3.3.5"` | image tag |
+| image.tag | string | `"v3.4.1"` | image tag |
 | ingress.main | object | See values.yaml | Enable and configure ingress settings for the chart under this key. |
 | lifecycle.postStart | object | See values.yaml | Set the container lifecycle event |
 | persistence | object | See values.yaml | Configure persistence settings for the chart under this key. |
@@ -96,6 +96,13 @@ N/A
 All notable changes to this application Helm chart will be documented in this file but does not include changes from our common library. To read those click [here](https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/commonREADME.md#Changelog).
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+### [12.2.0]
+
+#### Added
+
+- Update image with support for using Twelve Data API
+
 ### [12.0.0]
 
 #### Changed
@@ -116,6 +123,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - N/A
 
+[12.2.0]: #12.2.0
 [12.0.0]: #12.0.0
 [1.0.0]: #1.0.0
 
