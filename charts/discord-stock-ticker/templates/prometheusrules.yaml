@@ -1,36 +1,38 @@
-{{- if .Values.prometheus.prometheusRule.enabled -}}
+{{- if and .Values.metrics.enabled .Values.metrics.prometheusRule.enabled }}
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
 metadata:
-  name: {{ template "common.names.fullname" . }}.rules
-  {{- if .Values.prometheus.prometheusRule.namespace }}
-  namespace: {{ .Values.prometheus.prometheusRule.namespace | quote }}
-  {{- else }}
-  namespace: {{ .Release.Namespace | quote }}
-  {{- end }}
+  name: {{ include "common.names.fullname" . }}
   labels:
     {{- include "common.labels" . | nindent 4 }}
-    {{- with .Values.prometheus.prometheusRule.additionalLabels }}
+    {{- with .Values.metrics.prometheusRule.labels }}
     {{- toYaml . | nindent 4 }}
     {{- end }}
 spec:
   groups:
-  - name: {{ template "common.names.fullname" . }}.rules
-    rules:
-    - alert: DiscordStockTickerAbsent
-      expr: absent(up{job="{{ template "common.names.fullname" . }}"})
-      for: 5m
-      labels:
-        severity: critical
-      annotations:
-        description: Bots will be down until {{ template "common.names.fullname" . }} is back up
-        summary: {{ template "common.names.fullname" . }} has disappeared from Prometheus service discovery.
-    - alert: ZeroTickers
-      expr: ticker_count == 0
-      for: 5m
-      labels:
-        severity: critical
-      annotations:
-        description: Bot is not reporting any tickers in the api
-        summary: Bot has 0 tickers
-{{- end -}}
+    - name: {{ include "common.names.fullname" . }}
+      rules:
+        - alert: DiscordStockTickerAbsent
+          annotations:
+            description: Discord Stock Ticker has disappeared from Prometheus
+              service discovery.
+            summary: Discord Stock Ticker is down.
+          expr: |
+            absent(up{job="{{ include "common.names.fullname" . }}"} == 1)
+          for: 5m
+          labels:
+            severity: critical
+        - alert: ZeroTickers
+          annotations:
+            description: Discord Stock Ticker did not receive the payload
+              to the api.
+            summary: Bot has 0 tickers.
+          expr: |
+            ticker_count == 0
+          for: 5m
+          labels:
+            severity: critical
+        {{- with .Values.metrics.prometheusRule.rules }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+{{- end }}

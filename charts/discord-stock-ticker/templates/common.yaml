@@ -1,20 +1,19 @@
-{{/* Make sure all variables are set properly */}}                                                                                                                                                                          
+{{/* Make sure all variables are set properly */}}
 {{- include "common.values.setup" . }}
 
-{{/* Append the configMap volume to the volumes */}}
-{{- define "discord-stock-ticker.configVolume" -}}
-enabled: "true"
-mountPath: "/config/payload.sh"
-subPath: "payload.sh"
-type: "custom"
-volumeSpec:
-  configMap:
-    defaultMode: 0755
-    name: {{ include "common.names.fullname" . }}-config
+{{/* Append the hardcoded settings */}}
+{{- define "discord-stock-ticker.hardcodedValues" -}}
+persistence:
+  discord-stock-ticker-config:
+    enabled: "true"
+    mountPath: "/app/payload.sh"
+    subPath: "payload.sh"
+    type: "custom"
+    volumeSpec:
+      configMap:
+        name: {{ printf "%v-config" (include "common.names.fullname" .) }}
 {{- end -}}
-{{- if .Values.configmap.enabled -}}
-{{- $_ := set .Values.persistence "discord-stock-ticker-config" (include "discord-stock-ticker.configVolume" . | fromYaml) -}}
-{{- end -}}
+{{- $_ := mergeOverwrite .Values (include "discord-stock-ticker.hardcodedValues" . | fromYaml) -}}
 
 {{/* Render the templates */}}
 {{ include "common.all" . }}

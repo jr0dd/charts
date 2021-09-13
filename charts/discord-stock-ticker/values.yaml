@@ -48,19 +48,6 @@ persistence:
     enabled: false
     mountPath: /config
 
-prometheus:
-  # -- Enable and configure a Prometheus serviceMonitor for the chart under this key.
-  # @default -- See values.yaml
-  serviceMonitor:
-    enabled: false
-    interval: 10s
-    additionalLabels: {}
-  # -- Enable and configure a Prometheus rules for the chart under this key.
-  # @default -- See values.yaml
-  prometheusRule:
-    enabled: false
-    additionalLabels: {}
-
 # -- Configures the probes for the main Pod.
 # @default -- See values.yaml
 probes:
@@ -77,6 +64,33 @@ probes:
       timeoutSeconds: 1
       periodSeconds: 5
       failureThreshold: 5
+
+metrics:
+  # -- Enable and configure a Prometheus serviceMonitor for the chart under this key.
+  # @default -- See values.yaml
+  enabled: false
+  serviceMonitor:
+    interval: 30s
+    scrapeTimeout: 10s
+    labels: {}
+  # -- Enable and configure Prometheus Rules for the chart under this key.
+  # @default -- See values.yaml
+  prometheusRule:
+    enabled: false
+    labels: {}
+    # -- Configure additionial rules for the chart under this key.
+    # @default -- See prometheusrules.yaml
+    rules: []
+      # - alert: DiscordStockTickerAbsent
+      #   annotations:
+      #     description: Discord Stock Ticker has disappeared from Prometheus
+      #       service discovery.
+      #     summary: Discord Stock Ticker is down.
+      #   expr: |
+      #     absent(up{job="discord-stock-ticker"} == 1)
+      #   for: 5m
+      #   labels:
+      #     severity: critical
 
 # -- Store payload script as a configmap
 # -- Otherwise you can use env vars or curl to deliver the payload
