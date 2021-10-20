@@ -3,6 +3,28 @@ entries:
   cloudflare-ddns:
   - apiVersion: v2
     appVersion: 3.1.0
+    created: "2021-10-20T04:33:18.261363783Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 4.0.1
+    description: cloudflare ddns updater
+    digest: 73e2a9ff06b8fac291c7a7fcdaaa4317e11158a57c25ade35377a4c975be0565
+    icon: https://www.pinclipart.com/picdir/middle/9-95127_the-free-version-of-cloudflare-content-delivery-network.png
+    keywords:
+    - dns
+    - cloudflare
+    - security
+    kubeVersion: '>=1.16.0-0'
+    name: cloudflare-ddns
+    sources:
+    - https://github.com/jr0dd/container-images
+    - https://github.com/jr0dd/charts
+    urls:
+    - https://github.com/jr0dd/charts/releases/download/cloudflare-ddns-6.0.1/cloudflare-ddns-6.0.1.tgz
+    version: 6.0.1
+  - apiVersion: v2
+    appVersion: 3.1.0
     created: "2021-08-10T17:31:43.651387647Z"
     dependencies:
     - name: common
@@ -157,6 +179,28 @@ entries:
   code-server:
   - apiVersion: v2
     appVersion: 3.11.1
+    created: "2021-10-20T04:33:18.410338128Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 4.0.1
+    description: VS Code in the browser
+    digest: a1c7eeb13109fa9fd07a5ff5fa43e1867ef906fe98d485da070935026a6b277f
+    icon: https://github.com/cdr/code-server/blob/main/src/browser/media/pwa-icon.png
+    keywords:
+    - coding
+    - dev
+    - vscode
+    kubeVersion: '>=1.16.0-0'
+    name: code-server
+    sources:
+    - https://github.com/cdr/code-server
+    - https://github.com/jr0dd/charts
+    urls:
+    - https://github.com/jr0dd/charts/releases/download/code-server-6.0.1/code-server-6.0.1.tgz
+    version: 6.0.1
+  - apiVersion: v2
+    appVersion: 3.11.1
     created: "2021-08-10T17:31:43.79423639Z"
     dependencies:
     - name: common
@@ -306,6 +350,30 @@ entries:
     - https://github.com/jr0dd/charts/releases/download/code-server-5.4.2/code-server-5.4.2.tgz
     version: 5.4.2
   discord-stock-ticker:
+  - apiVersion: v2
+    appVersion: 3.6.1
+    created: "2021-10-20T04:33:18.632551562Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 4.0.1
+    description: discord stock ticker bot
+    digest: 720c7492792543d044ed553f1bba1dd6da14b8d3bf7124f4ec85501655cf622a
+    icon: https://yt3.ggpht.com/a/AATXAJyg-fbSlEWGUgmsY_0DBQKQThY_Shh_yHGGAQ=s900-c-k-c0xffffffff-no-rj-mo
+    keywords:
+    - bot
+    - stocks
+    - crypto
+    - discord
+    kubeVersion: '>=1.16.0-0'
+    name: discord-stock-ticker
+    sources:
+    - https://github.com/rssnyder/discord-stock-ticker
+    - https://github.com/jr0dd/charts
+    - https://github.com/jr0dd/container-images
+    urls:
+    - https://github.com/jr0dd/charts/releases/download/discord-stock-ticker-13.1.0/discord-stock-ticker-13.1.0.tgz
+    version: 13.1.0
   - apiVersion: v2
     appVersion: 3.5.0
     created: "2021-09-13T02:55:09.145308221Z"
@@ -646,6 +714,28 @@ entries:
   mkvtoolnix:
   - apiVersion: v2
     appVersion: 60.0.0
+    created: "2021-10-20T04:33:18.79965264Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 4.0.1
+    description: Docker container for MKVToolNix
+    digest: 7df162f6ab428bec7c44b829a7bfefd996b126d7fa9de533f3a5a89f2b2ad63a
+    icon: https://images.weserv.nl/?url=raw.githubusercontent.com/jlesage/docker-templates/master/jlesage/images/mkvtoolnix-icon.png
+    keywords:
+    - video editing
+    - mkv
+    kubeVersion: '>=1.16.0-0'
+    name: mkvtoolnix
+    sources:
+    - https://github.com/jlesage/docker-mkvtoolnix
+    - https://mkvtoolnix.download/source.html
+    - https://github.com/jr0dd/charts
+    urls:
+    - https://github.com/jr0dd/charts/releases/download/mkvtoolnix-4.0.1/mkvtoolnix-4.0.1.tgz
+    version: 4.0.1
+  - apiVersion: v2
+    appVersion: 60.0.0
     created: "2021-08-10T17:31:44.033638385Z"
     dependencies:
     - name: common
@@ -778,6 +868,29 @@ entries:
   pi-hole:
   - apiVersion: v2
     appVersion: 5.8.1
+    created: "2021-10-20T04:33:18.979443019Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 4.0.1
+    description: A black hole for Internet advertisements
+    digest: 929bd04871950c6485c4735d2842ff18c835f30c5ab6b77e59e8381a12ef0fbe
+    icon: https://pi-hole.github.io/graphics/Vortex/Vortex_with_Wordmark.svg
+    keywords:
+    - dns
+    - pi-hole
+    - security
+    - ad-blocking
+    kubeVersion: '>=1.16.0-0'
+    name: pi-hole
+    sources:
+    - https://github.com/pi-hole/docker-pi-hole
+    - https://github.com/jr0dd/charts
+    urls:
+    - https://github.com/jr0dd/charts/releases/download/pi-hole-4.0.1/pi-hole-4.0.1.tgz
+    version: 4.0.1
+  - apiVersion: v2
+    appVersion: 5.8.1
     created: "2021-08-10T17:31:44.161682744Z"
     dependencies:
     - name: common
@@ -868,6 +981,32 @@ entries:
     - https://github.com/jr0dd/charts/releases/download/pihole-3.3.3/pihole-3.3.3.tgz
     version: 3.3.3
   wireguard:
+  - apiVersion: v2
+    appVersion: 1.0.20210424
+    created: "2021-10-20T04:33:19.140062592Z"
+    dependencies:
+    - name: common
+      repository: https://library-charts.k8s-at-home.com
+      version: 4.0.1
+    description: Fast, modern, secure VPN tunnel
+    digest: 5149ec5928667fb026a79a696b8ba82840e09558b2a3520c5a5ed29ff006ebfd
+    icon: https://avatars.githubusercontent.com/u/13991055?s=200&v=4
+    keywords:
+    - vpn
+    - privacy
+    - security
+    - wireguard
+    kubeVersion: '>=1.16.0-0'
+    maintainers:
+    - email: j_r0dd@icloud.com
+      name: jr0dd
+    name: wireguard
+    sources:
+    - https://github.com/k8s-at-home/container-images
+    - https://github.com/jr0dd/charts
+    urls:
+    - https://github.com/jr0dd/charts/releases/download/wireguard-9.0.3/wireguard-9.0.3.tgz
+    version: 9.0.3
   - apiVersion: v2
     appVersion: 1.0.20210424
     created: "2021-08-16T14:46:29.115123004Z"
@@ -1009,4 +1148,4 @@ entries:
     urls:
     - https://github.com/jr0dd/charts/releases/download/wireguard-8.5.7/wireguard-8.5.7.tgz
     version: 8.5.7
-generated: "2021-09-13T02:55:09.145413222Z"
+generated: "2021-10-20T04:33:19.140355901Z"
