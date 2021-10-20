@@ -1,6 +1,6 @@
 # discord-stock-ticker
 
-![Version: 13.0.1](https://img.shields.io/badge/Version-13.0.1-informational?style=flat-square) ![AppVersion: 3.5.0](https://img.shields.io/badge/AppVersion-3.5.0-informational?style=flat-square)
+![Version: 13.1.0](https://img.shields.io/badge/Version-13.1.0-informational?style=flat-square) ![AppVersion: 3.6.1](https://img.shields.io/badge/AppVersion-3.6.1-informational?style=flat-square)
 
 discord stock ticker bot
 
@@ -82,7 +82,7 @@ N/A
 | env.TZ | string | `"UTC"` | Set the container timezone |
 | image.pullPolicy | string | `"IfNotPresent"` | image pull policy |
 | image.repository | string | `"ghcr.io/jr0dd/discord-stock-ticker"` | image repository |
-| image.tag | string | `"v3.5.0"` | image tag |
+| image.tag | string | `"v3.6.1"` | image tag |
 | ingress.main | object | See values.yaml | Enable and configure ingress settings for the chart under this key. |
 | lifecycle.postStart | object | See values.yaml | Set the container lifecycle event |
 | metrics.enabled | bool | See values.yaml | Enable and configure a Prometheus serviceMonitor for the chart under this key. |

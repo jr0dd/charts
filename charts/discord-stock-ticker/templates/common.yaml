@@ -3,8 +3,9 @@
 
 {{/* Append the hardcoded settings */}}
 {{- define "discord-stock-ticker.hardcodedValues" -}}
+{{ if .Values.configmap.enabled }}
 persistence:
-  discord-stock-ticker-config:
+  payload-config:
     enabled: "true"
     mountPath: "/app/payload.sh"
     subPath: "payload.sh"
@@ -12,6 +13,7 @@ persistence:
     volumeSpec:
       configMap:
         name: {{ printf "%v-config" (include "common.names.fullname" .) }}
+{{ end }}
 {{- end -}}
 {{- $_ := mergeOverwrite .Values (include "discord-stock-ticker.hardcodedValues" . | fromYaml) -}}
 

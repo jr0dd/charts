@@ -9,7 +9,7 @@ image:
   # -- image repository
   repository: ghcr.io/jr0dd/discord-stock-ticker
   # -- image tag
-  tag: v3.5.0
+  tag: v3.6.1
   # -- image pull policy
   pullPolicy: IfNotPresent
 
