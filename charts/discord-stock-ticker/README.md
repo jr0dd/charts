@@ -1,6 +1,6 @@
 # discord-stock-ticker
 
-![Version: 13.2.0](https://img.shields.io/badge/Version-13.2.0-informational?style=flat-square) ![AppVersion: 3.6.1](https://img.shields.io/badge/AppVersion-3.6.1-informational?style=flat-square)
+![Version: 13.3.0](https://img.shields.io/badge/Version-13.3.0-informational?style=flat-square) ![AppVersion: 3.7.1](https://img.shields.io/badge/AppVersion-3.7.1-informational?style=flat-square)
 
 discord stock ticker bot
 
