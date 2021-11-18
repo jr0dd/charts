@@ -92,12 +92,9 @@ metrics:
       #   labels:
       #     severity: critical
 
-# -- Store payload script as a configmap
-# -- Otherwise you can use env vars or curl to deliver the payload
-## Please see docs https://github.com/rssnyder/discord-stock-ticker
 # -- Configure configMaps for the chart here.
- # Additional configMaps can be added by adding a dictionary key similar to the 'config' object.
- # @default -- See below
+#  Additional configMaps can be added by adding a dictionary key similar to the 'config' object.
+#  @default -- See below
 configmap:
   config:
     # -- Enables or disables the configMap

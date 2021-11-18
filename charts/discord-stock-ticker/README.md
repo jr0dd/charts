@@ -1,6 +1,6 @@
 # discord-stock-ticker
 
-![Version: 13.2.0](https://img.shields.io/badge/Version-13.2.0-informational?style=flat-square) ![AppVersion: 3.6.1](https://img.shields.io/badge/AppVersion-3.6.1-informational?style=flat-square)
+![Version: 13.3.1](https://img.shields.io/badge/Version-13.3.1-informational?style=flat-square) ![AppVersion: 3.7.1](https://img.shields.io/badge/AppVersion-3.7.1-informational?style=flat-square)
 
 discord stock ticker bot
 
@@ -77,7 +77,7 @@ N/A
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| configmap.config.data | string | `"#!/usr/bin/env bash\nset -eu\n\nFREQ=\"10\"\nNICK=\"true\"\nCOLOR=\"true\"\nACTIVITY=\"\"\n\ncurl -X POST \\\n\"localhost:8080/ticker\" \\\n-H \"Content-Type: application/json\" \\\n-d \"{\\\"ticker\\\":\\\"BTC\\\", \\\n  \\\"name\\\":\\\"bitcoin\\\", \\\n  \\\"discord_bot_token\\\":\\\"${BTC}\\\", \\\n  \\\"crypto\\\":true, \\\n  \\\"frequency\\\":${FREQ}, \\\n  \\\"set_nickname\\\":${NICK}, \\\n  \\\"set_color\\\":${COLOR}, \\\n  \\\"bitcoin\\\":false, \\\n  \\\"activity\\\":\\\"${ACTIVITY}\\\"}\"\n\ncurl -X POST \\\n\"localhost:8080/ticker\" \\\n-H \"Content-Type: application/json\" \\\n-d \"{\\\"ticker\\\":\\\"GME\\\", \\\n  \\\"name\\\":\\\"GME\\\", \\\n  \\\"discord_bot_token\\\":\\\"${GME}\\\", \\\n  \\\"frequency\\\":${FREQ}, \\\n  \\\"set_nickname\\\":${NICK}, \\\n  \\\"set_color\\\":${COLOR}, \\\n  \\\"activity\\\":\\\"${ACTIVITY}\\\"}\"\n"` |  |
+| configmap | object | `{"config":{"data":"#!/usr/bin/env bash\nset -eu\n\nFREQ=\"10\"\nNICK=\"true\"\nCOLOR=\"true\"\nACTIVITY=\"\"\n\ncurl -X POST \\\n\"localhost:8080/ticker\" \\\n-H \"Content-Type: application/json\" \\\n-d \"{\\\"ticker\\\":\\\"BTC\\\", \\\n  \\\"name\\\":\\\"bitcoin\\\", \\\n  \\\"discord_bot_token\\\":\\\"${BTC}\\\", \\\n  \\\"crypto\\\":true, \\\n  \\\"frequency\\\":${FREQ}, \\\n  \\\"set_nickname\\\":${NICK}, \\\n  \\\"set_color\\\":${COLOR}, \\\n  \\\"bitcoin\\\":false, \\\n  \\\"activity\\\":\\\"${ACTIVITY}\\\"}\"\n\ncurl -X POST \\\n\"localhost:8080/ticker\" \\\n-H \"Content-Type: application/json\" \\\n-d \"{\\\"ticker\\\":\\\"GME\\\", \\\n  \\\"name\\\":\\\"GME\\\", \\\n  \\\"discord_bot_token\\\":\\\"${GME}\\\", \\\n  \\\"frequency\\\":${FREQ}, \\\n  \\\"set_nickname\\\":${NICK}, \\\n  \\\"set_color\\\":${COLOR}, \\\n  \\\"activity\\\":\\\"${ACTIVITY}\\\"}\"\n","enabled":false}}` | Configure configMaps for the chart here.  Additional configMaps can be added by adding a dictionary key similar to the 'config' object.  @default -- See below |
 | configmap.config.enabled | bool | `false` | Enables or disables the configMap |
 | env.TZ | string | `"UTC"` | Set the container timezone |
 | image.pullPolicy | string | `"IfNotPresent"` | image pull policy |

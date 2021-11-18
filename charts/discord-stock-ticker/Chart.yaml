@@ -2,7 +2,7 @@ apiVersion: v2
 appVersion: 3.7.1
 description: discord stock ticker bot
 name: discord-stock-ticker
-version: 13.3.0
+version: 13.3.1
 kubeVersion: ">=1.16.0-0"
 keywords:
 - bot
