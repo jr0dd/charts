@@ -95,40 +95,42 @@ metrics:
 # -- Store payload script as a configmap
 # -- Otherwise you can use env vars or curl to deliver the payload
 ## Please see docs https://github.com/rssnyder/discord-stock-ticker
-# @default -- See values.yaml
+# -- Configure configMaps for the chart here.
+ # Additional configMaps can be added by adding a dictionary key similar to the 'config' object.
+ # @default -- See below
 configmap:
-  # -- If set to 'true', the configuration will be read from these values.
-  enabled: false
-  # @default -- See values.yaml
-  config: |
-    #!/usr/bin/env bash
-    set -eu
+  config:
+    # -- Enables or disables the configMap
+    enabled: false
+    data: |
+      #!/usr/bin/env bash
+      set -eu
 
-    FREQ="10"
-    NICK="true"
-    COLOR="true"
-    ACTIVITY=""
+      FREQ="10"
+      NICK="true"
+      COLOR="true"
+      ACTIVITY=""
 
-    curl -X POST \
-    "localhost:8080/ticker" \
-    -H "Content-Type: application/json" \
-    -d "{\"ticker\":\"BTC\", \
-      \"name\":\"bitcoin\", \
-      \"discord_bot_token\":\"${BTC}\", \
-      \"crypto\":true, \
-      \"frequency\":${FREQ}, \
-      \"set_nickname\":${NICK}, \
-      \"set_color\":${COLOR}, \
-      \"bitcoin\":false, \
-      \"activity\":\"${ACTIVITY}\"}"
+      curl -X POST \
+      "localhost:8080/ticker" \
+      -H "Content-Type: application/json" \
+      -d "{\"ticker\":\"BTC\", \
+        \"name\":\"bitcoin\", \
+        \"discord_bot_token\":\"${BTC}\", \
+        \"crypto\":true, \
+        \"frequency\":${FREQ}, \
+        \"set_nickname\":${NICK}, \
+        \"set_color\":${COLOR}, \
+        \"bitcoin\":false, \
+        \"activity\":\"${ACTIVITY}\"}"
 
-    curl -X POST \
-    "localhost:8080/ticker" \
-    -H "Content-Type: application/json" \
-    -d "{\"ticker\":\"GME\", \
-      \"name\":\"GME\", \
-      \"discord_bot_token\":\"${GME}\", \
-      \"frequency\":${FREQ}, \
-      \"set_nickname\":${NICK}, \
-      \"set_color\":${COLOR}, \
-      \"activity\":\"${ACTIVITY}\"}"
+      curl -X POST \
+      "localhost:8080/ticker" \
+      -H "Content-Type: application/json" \
+      -d "{\"ticker\":\"GME\", \
+        \"name\":\"GME\", \
+        \"discord_bot_token\":\"${GME}\", \
+        \"frequency\":${FREQ}, \
+        \"set_nickname\":${NICK}, \
+        \"set_color\":${COLOR}, \
+        \"activity\":\"${ACTIVITY}\"}"

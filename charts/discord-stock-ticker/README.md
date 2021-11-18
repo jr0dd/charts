@@ -77,8 +77,8 @@ N/A
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| configmap | object | See values.yaml | Store payload script as a configmap -- Otherwise you can use env vars or curl to deliver the payload |
-| configmap.enabled | bool | `false` | If set to 'true', the configuration will be read from these values. |
+| configmap.config.data | string | `"#!/usr/bin/env bash\nset -eu\n\nFREQ=\"10\"\nNICK=\"true\"\nCOLOR=\"true\"\nACTIVITY=\"\"\n\ncurl -X POST \\\n\"localhost:8080/ticker\" \\\n-H \"Content-Type: application/json\" \\\n-d \"{\\\"ticker\\\":\\\"BTC\\\", \\\n  \\\"name\\\":\\\"bitcoin\\\", \\\n  \\\"discord_bot_token\\\":\\\"${BTC}\\\", \\\n  \\\"crypto\\\":true, \\\n  \\\"frequency\\\":${FREQ}, \\\n  \\\"set_nickname\\\":${NICK}, \\\n  \\\"set_color\\\":${COLOR}, \\\n  \\\"bitcoin\\\":false, \\\n  \\\"activity\\\":\\\"${ACTIVITY}\\\"}\"\n\ncurl -X POST \\\n\"localhost:8080/ticker\" \\\n-H \"Content-Type: application/json\" \\\n-d \"{\\\"ticker\\\":\\\"GME\\\", \\\n  \\\"name\\\":\\\"GME\\\", \\\n  \\\"discord_bot_token\\\":\\\"${GME}\\\", \\\n  \\\"frequency\\\":${FREQ}, \\\n  \\\"set_nickname\\\":${NICK}, \\\n  \\\"set_color\\\":${COLOR}, \\\n  \\\"activity\\\":\\\"${ACTIVITY}\\\"}\"\n"` |  |
+| configmap.config.enabled | bool | `false` | Enables or disables the configMap |
 | env.TZ | string | `"UTC"` | Set the container timezone |
 | image.pullPolicy | string | `"IfNotPresent"` | image pull policy |
 | image.repository | string | `"ghcr.io/jr0dd/discord-stock-ticker"` | image repository |
