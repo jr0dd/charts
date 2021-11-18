@@ -18,7 +18,7 @@ lifecycle:
   # @default -- See values.yaml
   postStart:
     exec:
-      command: ["bash", "/app/payload.sh"]
+      command: ["bash", "/config/payload.sh"]
 
 # @default -- See below
 ## For additional env vars, if not using the configmap script below,
