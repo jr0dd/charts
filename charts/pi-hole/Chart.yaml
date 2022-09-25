@@ -2,7 +2,7 @@ apiVersion: v2
 appVersion: "5.8.1"
 description: A black hole for Internet advertisements
 name: pi-hole
-version: 4.3.0
+version: 4.4.0
 kubeVersion: ">=1.16.0-0"
 keywords:
 - dns
@@ -15,5 +15,5 @@ sources:
 icon: https://pi-hole.github.io/graphics/Vortex/Vortex_with_Wordmark.svg
 dependencies:
 - name: common
-  version: 4.3.0
+  version: 4.5.2
   repository: https://library-charts.k8s-at-home.com
