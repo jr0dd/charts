@@ -30,7 +30,7 @@ jobs:
         fetch-depth: 0
 
     - name: Set up chart-testing
-      uses: helm/chart-testing-action@v2.2.0
+      uses: helm/chart-testing-action@v2.8.0
 
     - name: Install Dev tools
       run: |
@@ -65,7 +65,7 @@ jobs:
         fetch-depth: 0
 
     - name: Set up chart-testing
-      uses: helm/chart-testing-action@v2.2.0
+      uses: helm/chart-testing-action@v2.8.0
 
     - name: Install Dev tools
       run: |
@@ -100,14 +100,14 @@ jobs:
     - name: Install Helm
       uses: azure/setup-helm@v1
       with:
-        version: v3.6.3
+        version: v3.22.0
 
     - uses: actions/setup-python@v2
       with:
-        python-version: 3.7
+        python-version: 3.14
 
     - name: Set up chart-testing
-      uses: helm/chart-testing-action@v2.2.0
+      uses: helm/chart-testing-action@v2.8.0
 
     - name: Run chart-testing (lint)
       id: lint
@@ -130,7 +130,7 @@ jobs:
     - name: Install Helm
       uses: azure/setup-helm@v1
       with:
-        version: v3.6.3
+        version: v3.22.0
 
     - name: Install Ruby
       uses: ruby/setup-ruby@v1
@@ -168,14 +168,14 @@ jobs:
     - name: Install Helm
       uses: azure/setup-helm@v1
       with:
-        version: v3.6.3
+        version: v3.22.0
 
     - uses: actions/setup-python@v2
       with:
-        python-version: 3.7
+        python-version: 3.14
 
     - name: Set up chart-testing
-      uses: helm/chart-testing-action@v2.2.0
+      uses: helm/chart-testing-action@v2.8.0
 
     - name: Create k3d cluster
       uses: nolar/setup-k3d-k3s@v1
